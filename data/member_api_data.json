@@ -1,0 +1,6 @@
+{
+  "MEMBER_API_URL": "https://allmember-api-ext-uat.cpall.co.th/AllMemberRequestBarcode/RequestBarcode",
+  "MEMBER_API_TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0aW1lU3RhbXAiOjE1NDc1NDYwODIwMDAsImNsaWVudElkIjoiZTg1ZDBjOWNkZThlNjVkMTc0YjI5ZjZkZjJkYmFiNTQiLCJjaGFubmVsSWQiOiJDTjAxIn0.h3qk3X4bq5uPMRjTtK9-avR9KFhv_mK7AyRlyxHq52s",
+  "MEMBER_IDENTIFY_ID": "0",
+  "MEMBER_IDENTIFY_VALUE": "010190590265"
+}

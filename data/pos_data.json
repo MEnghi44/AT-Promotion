@@ -1,0 +1,13 @@
+{
+  "VNC": "C:\\Program Files\\uvnc bvba\\UltraVNC\\vncviewer.exe",
+  "SERVER_IP": "117.113.122.213",
+  "VNC_PASSWORD": "2020ne",
+  "EMP_CODE": "0555503",
+  "EMP_PASSWORD": "05555",
+  "DB_FILE": "database-Merge-R1-R2-R3-R4.db",
+  "SHEET": ["AMB M+Store Hub"],
+  "ACTIVE_FROM": "24/08/2026",
+  "BATCH_START": 1,
+  "BATCH_END": 128
+}
+

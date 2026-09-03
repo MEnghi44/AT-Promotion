@@ -1,15 +1,1 @@
-# Secrets - contains real passwords/tokens, never commit
-data/pos_data.json
-data/member_api_data.json
-data/notes
 
-# Large data / generated artifacts
-data/*.db
-results/
-resources/__pycache__/
-**/__pycache__/
-*.pyc
-
-# Bundled installers (large binaries, not source)
-tools/Tesseract-OCR/
-tools/python-installer/

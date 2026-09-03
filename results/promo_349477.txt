@@ -1,0 +1,8 @@
+('1', 'Quantity', '8850718823000', '4110330', 'ซันไบทส์เดลี่นัทเดลี่บูสต์ถั่วอบผสม5ชนิด25ก.', '1', '1', 'Apply Promotion to All Customers (no card required)', 'ซันไบทส์', '')
+('1', 'Quantity', '8850718822980', '4110326', 'ซันไบทส์เดลี่นัทแอคทีฟมิกซ์ถั่วผสมผลไม้แห้ง25ก.', '1', '1', 'Apply Promotion to All Customers (no card required)', 'ซันไบทส์', '')
+('1', 'Quantity', '8850718823024', '4110328', 'ซันไบทส์เดลี่นัทโปรมิกซ์ถั่วผสมผลไม้แห้ง25ก.', '1', '1', 'Apply Promotion to All Customers (no card required)', 'ซันไบทส์', '')
+('2', 'Quantity', '8851019000459', '2901591', 'H นมอัลมอนด์กูลิโกะ ไม่เติมน้ำตาล ด. 180 มล.', '1', '1', 'Apply Promotion to All Customers (no card required)', 'นม', '')
+('2', 'Quantity', '8851019000442', '2901594', 'Hนมกูลิโกะดั้งเดิมด.180', '1', '1', 'Apply Promotion to All Customers (no card required)', 'นม', '')
+('2', 'Quantity', '8851019000466', '2901597', 'Hนมกูลิโกะช็อก180', '1', '1', 'Apply Promotion to All Customers (no card required)', 'นม', '')
+('2', 'Quantity', '8851019600093', '2902338', 'H นมอัลมอนด์กูลิโกะ มิกซ์ทรีนัท ด. 180 มล.', '1', '1', 'Apply Promotion to All Customers (no card required)', 'นม', '')
+('2', 'Quantity', '8851019601922', '2903120', 'Hนมอัลมอนด์กูลิโกะ ดาร์คคาราเมล ด. 180 มล.', '1', '1', 'Apply Promotion to All Customers (no card required)', 'นม', '')

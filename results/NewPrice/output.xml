@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-09-02T17:56:46.114261" rpa="false" schemaversion="5">
+<suite id="s1" name="New Price" source="D:\POS_Automation\tests\New Price.robot">
+<test id="s1-t1" name="Open VNC" line="10">
+<kw name="Open VNC And Connect" owner="pos_keywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Run Process" owner="Process">
+<msg time="2026-09-02T17:56:48.934570" level="INFO">Starting process:
+taskkill /IM vncviewer.exe /F</msg>
+<msg time="2026-09-02T17:56:49.048732" level="INFO">Waiting for process to complete.</msg>
+<msg time="2026-09-02T17:56:49.924840" level="INFO">Process completed.</msg>
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2026-09-02T17:56:48.934242" elapsed="0.990838"/>
+</kw>
+<arg>Run Process</arg>
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-09-02T17:56:48.933626" elapsed="0.991657"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-02T17:56:51.427432" level="INFO">Slept 1 second 500 milliseconds.</msg>
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-02T17:56:49.925617" elapsed="1.502056"/>
+</kw>
+<kw name="Windows Run" owner="RPA.Windows">
+<msg time="2026-09-02T17:56:51.428658" level="INFO">Sending keys '{Win}r' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg time="2026-09-02T17:56:51.979594" level="INFO">Sending keys 'C:\\Program Files\\uvnc bvba\\UltraVNC\\vncviewer.exe' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg time="2026-09-02T17:56:53.109618" level="INFO">Sending keys '{Enter}' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>${vnc_path}</arg>
+<tag>window</tag>
+<doc>Use Windows Run window to launch an application.</doc>
+<status status="PASS" start="2026-09-02T17:56:51.428032" elapsed="5.210862"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-02T17:56:58.141493" level="INFO">Slept 1 second 500 milliseconds.</msg>
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-02T17:56:56.639232" elapsed="1.502921"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<msg time="2026-09-02T17:56:58.627982" level="INFO">Getting element with locator: executable:vncviewer.exe and type:WindowControl</msg>
+<msg time="2026-09-02T17:56:58.628469" level="INFO">Resulted root element: WindowsElement(name='Desktop 1', type='PaneControl', class='#32769', locator='executable:vncviewer.exe and type:WindowControl')</msg>
+<msg time="2026-09-02T17:56:58.628826" level="INFO">Locator 'executable:vncviewer.exe and type:WindowControl' produced matcher: MatchObject(locators=[('executable', 'vncviewer.exe', 0), ('ControlType', 'WindowControl', 0)], _classes=set(), max_level=0)</msg>
+<msg time="2026-09-02T17:56:59.417192" level="INFO">Found process with window title: 'UltraVNC Viewer - 1.8.2.4'</msg>
+<msg time="2026-09-02T17:56:59.545365" level="INFO">Returning element: WindowsElement(name='UltraVNC Viewer - 1.8.2.4', type='WindowControl', class='#32770', locator='executable:vncviewer.exe and type:WindowControl')</msg>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="PASS" start="2026-09-02T17:56:58.142790" elapsed="1.905075"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:00.050168" level="INFO">Sending keys '117.113.122.213' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>keys=${server_ip}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:00.048861" elapsed="0.694481"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:00.746256" level="INFO">Getting element with locator: name:Connect</msg>
+<msg time="2026-09-02T17:57:00.746533" level="INFO">Resulted root element: WindowsElement(name='UltraVNC Viewer - 1.8.2.4', type='WindowControl', class='#32770', locator='executable:vncviewer.exe and type:WindowControl')</msg>
+<msg time="2026-09-02T17:57:00.746764" level="INFO">Locator 'name:Connect' produced matcher: MatchObject(locators=[('Name', 'Connect', 0)], _classes=set(), max_level=0)</msg>
+<msg time="2026-09-02T17:57:00.821700" level="INFO">Returning element: WindowsElement(name='Connect', id='2035', type='ButtonControl', class='Button', locator='name:Connect')</msg>
+<arg>name:Connect</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:00.743754" elapsed="0.650319"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Control Window" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:01.403177" level="INFO">Getting element with locator: regex:.*Authentication.* and type:WindowControl</msg>
+<msg time="2026-09-02T17:57:01.403569" level="INFO">Resulted root element: WindowsElement(name='Desktop 1', type='PaneControl', class='#32769', locator='regex:.*Authentication.* and type:WindowControl')</msg>
+<msg time="2026-09-02T17:57:01.403856" level="INFO">Locator 'regex:.*Authentication.* and type:WindowControl' produced matcher: MatchObject(locators=[('RegexName', '.*Authentication.*', 0), ('ControlType', 'WindowControl', 0)], _classes=set(), max_level=0)</msg>
+<msg time="2026-09-02T17:57:03.115610" level="INFO">Returning element: WindowsElement(name='UltraVNC Viewer - Authentication   117.113.122.213:5900', type='WindowControl', class='#32770', locator='regex:.*Authentication.* and type:WindowControl')</msg>
+<arg>regex:.*Authentication.*</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:01.396937" elapsed="2.219783"/>
+</kw>
+<arg>6x</arg>
+<arg>2s</arg>
+<arg>Control Window</arg>
+<arg>regex:.*Authentication.*</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-09-02T17:57:01.395580" elapsed="2.221401"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:03.618017" level="INFO">Sending keys '2020ne' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>keys=${vnc_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:03.617359" elapsed="0.574102"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:04.194052" level="INFO">Getting element with locator: name:Login</msg>
+<msg time="2026-09-02T17:57:04.194313" level="INFO">Resulted root element: WindowsElement(name='UltraVNC Viewer - Authentication   117.113.122.213:5900', type='WindowControl', class='#32770', locator='regex:.*Authentication.* and type:WindowControl')</msg>
+<msg time="2026-09-02T17:57:04.194455" level="INFO">Locator 'name:Login' produced matcher: MatchObject(locators=[('Name', 'Login', 0)], _classes=set(), max_level=0)</msg>
+<msg time="2026-09-02T17:57:04.211663" level="INFO">Returning element: WindowsElement(name='Login', id='1', type='ButtonControl', class='Button', locator='name:Login')</msg>
+<arg>name:Login</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:04.191753" elapsed="0.584809"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-02T17:57:06.280897" level="INFO">Slept 1 second 500 milliseconds.</msg>
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-02T17:57:04.779588" elapsed="1.501440"/>
+</kw>
+<kw name="Arrange Windows Side By Side" owner="window_keywords">
+<arg>vncviewer.exe</arg>
+<status status="PASS" start="2026-09-02T17:57:06.281219" elapsed="0.012636"/>
+</kw>
+<arg>${VNC}</arg>
+<arg>${SERVER_IP}</arg>
+<arg>${VNC_PASSWORD}</arg>
+<doc>เปิด UltraVNC Viewer เชื่อมต่อไปยัง server และล็อกอินผ่าน VNC</doc>
+<status status="PASS" start="2026-09-02T17:56:48.930201" elapsed="17.363786"/>
+</kw>
+<doc>เปิดโปรแกรม VNC</doc>
+<status status="PASS" start="2026-09-02T17:56:48.924713" elapsed="17.369706"/>
+</test>
+<test id="s1-t2" name="login Pos" line="14">
+<kw name="Login To POS" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:06.301802" level="INFO">Getting element with locator: executable:vncviewer.exe and type:WindowControl</msg>
+<msg time="2026-09-02T17:57:06.302129" level="INFO">Resulted root element: WindowsElement(name='Desktop 1', type='PaneControl', class='#32769', locator='executable:vncviewer.exe and type:WindowControl')</msg>
+<msg time="2026-09-02T17:57:06.302343" level="INFO">Locator 'executable:vncviewer.exe and type:WindowControl' produced matcher: MatchObject(locators=[('executable', 'vncviewer.exe', 0), ('ControlType', 'WindowControl', 0)], _classes=set(), max_level=0)</msg>
+<msg time="2026-09-02T17:57:06.760355" level="INFO">Found process with window title: 'POS2_10882 '</msg>
+<msg time="2026-09-02T17:57:06.927046" level="INFO">Returning element: WindowsElement(name='POS2_10882 ', type='WindowControl', class='VNCMDI_Window', locator='executable:vncviewer.exe and type:WindowControl')</msg>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:06.297866" elapsed="1.131443"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-02T17:57:08.930520" level="INFO">Slept 1 second 500 milliseconds.</msg>
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-02T17:57:07.429592" elapsed="1.501131"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:08.931726" level="INFO">Sending keys '0555503' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>keys=${emp_code}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:08.931085" elapsed="0.588274"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:09.520338" level="INFO">Sending keys '{ENTER}' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:09.519734" elapsed="0.524466"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:10.045932" level="INFO">Sending keys '05555' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>keys=${emp_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:10.044807" elapsed="0.562601"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:10.608288" level="INFO">Sending keys '{ENTER}' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:10.607814" elapsed="0.523880"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-02T17:57:16.133199" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-02T17:57:11.131990" elapsed="5.001429"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-09-02T17:57:16.134276" level="INFO">Sending keys '{ENTER}' to element: &lt;module 'uiautomation' from 'C:\\Users\\chirayutsah\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="PASS" start="2026-09-02T17:57:16.133767" elapsed="0.524827"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-02T17:57:19.161116" level="INFO">Slept 2 seconds 500 milliseconds.</msg>
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-02T17:57:16.659394" elapsed="2.501925"/>
+</kw>
+<arg>${EMP_CODE}</arg>
+<arg>${EMP_PASSWORD}</arg>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:57:06.297033" elapsed="12.864470"/>
+</kw>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:57:06.295416" elapsed="12.866744"/>
+</test>
+<test id="s1-t3" name="New Price" line="18">
+<kw name="Get Promotion Rows" owner="db_keywords">
+<msg time="2026-09-02T17:57:19.328508" level="INFO">${rows} = []</msg>
+<var>${rows}</var>
+<arg>D:\\POS_Automation\\tests/../data/${DB_FILE}</arg>
+<arg>New Price</arg>
+<arg>${ACTIVE_FROM}</arg>
+<arg>${SHEET}</arg>
+<arg>${BATCH_START}</arg>
+<arg>${BATCH_END}</arg>
+<doc>start_row/end_row are 1-indexed positions within the filtered result set,
+e.g. start_row=2, end_row=20 selects the 2nd through 20th matching rows.</doc>
+<status status="PASS" start="2026-09-02T17:57:19.168108" elapsed="0.160524"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${row}[promotion_code],${row}[promotion_name],${row}[entity_code],${row}[entity_name],${row}[barcode] จำนวน ${row}[trigger_value]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:57:19.329603" elapsed="0.000058"/>
+</kw>
+<kw name="Sell Product" owner="pos_keywords">
+<arg>${row}[barcode]</arg>
+<arg>${row}[trigger_value]</arg>
+<doc>ขายสินค้า: สแกนบาร์โค้ดแล้วกดปุ่มบวก (+) เพื่อเพิ่มลงรายการขาย</doc>
+<status status="NOT RUN" start="2026-09-02T17:57:19.330127" elapsed="0.000080"/>
+</kw>
+<kw name="Pay For Product" owner="pos_keywords">
+<arg>${row}[barcode]</arg>
+<arg>${row}[reward_value]</arg>
+<arg>${row}[member_segmentation]</arg>
+<arg>${MEMBER_API_URL}</arg>
+<arg>${MEMBER_API_TOKEN}</arg>
+<arg>${MEMBER_IDENTIFY_ID}</arg>
+<arg>${MEMBER_IDENTIFY_VALUE}</arg>
+<doc>กดสมาชิก+ยืนยัน (ถ้าโปรโมชั่นนี้ต้องใช้บัตรสมาชิก) แล้วเช็คยอดที่ต้องชำระบนหน้าจอ
+ให้ตรงกับที่คาดไว้ แล้วกด "รับพอดี" และยืนยันการชำระ
+(member_segmentation = "All Members (card required)" ต้องกดสมาชิก+ยืนยันก่อนเช็คยอดเสมอ
+เพราะราคาโปรโมชั่นจะยังไม่ขึ้นจนกว่าจะยืนยันสมาชิกแล้ว)</doc>
+<status status="NOT RUN" start="2026-09-02T17:57:19.330866" elapsed="0.000058"/>
+</kw>
+<var name="${row}"/>
+<status status="NOT RUN" start="2026-09-02T17:57:19.329366" elapsed="0.001688"/>
+</iter>
+<var>${row}</var>
+<value>@{rows}</value>
+<status status="NOT RUN" start="2026-09-02T17:57:19.329089" elapsed="0.002018"/>
+</for>
+<doc>ดึงรายการโปรโมชั่น New Price จากฐานข้อมูล แล้ววนขายทีละรายการต่อเนื่องกันโดยไม่ login ใหม่
+แต่ละรายการแยกเป็น 2 ขั้นตอนชัดเจน: ขายสินค้า (Sell Product) แล้วชำระยอดและชำระเงิน (Pay For Product)</doc>
+<status status="PASS" start="2026-09-02T17:57:19.163222" elapsed="0.168242"/>
+</test>
+<kw name="Close Current Window" owner="RPA.Windows" type="TEARDOWN">
+<msg time="2026-09-02T17:57:19.334394" level="INFO">Closing window with name: POS2_10882  (PID: 44848)</msg>
+<tag>window</tag>
+<doc>Closes current active window or logs a warning message.</doc>
+<status status="PASS" start="2026-09-02T17:57:19.332925" elapsed="0.006630"/>
+</kw>
+<doc>ทดสอบขายสินค้าตามโปรโมชั่น New Price จากฐานข้อมูล</doc>
+<status status="PASS" start="2026-09-02T17:56:46.155619" elapsed="33.184032"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="New Price" id="s1" pass="3" fail="0" skip="0">New Price</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

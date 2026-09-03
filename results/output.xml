@@ -1,0 +1,2446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-09-02T17:55:50.321954" rpa="false" schemaversion="5">
+<suite id="s1" name="Earn Points &amp; New Price &amp; Free Item">
+<suite id="s1-s1" name="Earn Points" source="D:\POS_Automation\tests\Earn Points.robot">
+<test id="s1-s1-t1" name="Open VNC" line="10">
+<kw name="Open VNC And Connect" owner="pos_keywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Run Process" owner="Process">
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.648348" elapsed="0.000187"/>
+</kw>
+<arg>Run Process</arg>
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-09-02T17:55:51.647932" elapsed="0.000678"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.648713" elapsed="0.000171"/>
+</kw>
+<kw name="Windows Run" owner="RPA.Windows">
+<arg>${vnc_path}</arg>
+<tag>window</tag>
+<doc>Use Windows Run window to launch an application.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.648981" elapsed="0.000052"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.649110" elapsed="0.000147"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.649339" elapsed="0.000199"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${server_ip}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.649639" elapsed="0.000072"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>name:Connect</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.649793" elapsed="0.000069"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>regex:.*Authentication.*</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.650217" elapsed="0.000073"/>
+</kw>
+<arg>6x</arg>
+<arg>2s</arg>
+<arg>Control Window</arg>
+<arg>regex:.*Authentication.*</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-09-02T17:55:51.649951" elapsed="0.000370"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${vnc_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.650398" elapsed="0.000062"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>name:Login</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.650539" elapsed="0.000063"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.650679" elapsed="0.000155"/>
+</kw>
+<kw name="Arrange Windows Side By Side" owner="window_keywords">
+<arg>vncviewer.exe</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.650911" elapsed="0.000049"/>
+</kw>
+<arg>${VNC}</arg>
+<arg>${SERVER_IP}</arg>
+<arg>${VNC_PASSWORD}</arg>
+<doc>เปิด UltraVNC Viewer เชื่อมต่อไปยัง server และล็อกอินผ่าน VNC</doc>
+<status status="PASS" start="2026-09-02T17:55:51.647379" elapsed="0.003617"/>
+</kw>
+<doc>เปิดโปรแกรม VNC</doc>
+<status status="PASS" start="2026-09-02T17:55:51.646497" elapsed="0.004604"/>
+</test>
+<test id="s1-s1-t2" name="login Pos" line="14">
+<kw name="Login To POS" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.652402" elapsed="0.000088"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.652575" elapsed="0.000168"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${emp_code}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.652825" elapsed="0.000063"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.652986" elapsed="0.000059"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${emp_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.653120" elapsed="0.000051"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.653248" elapsed="0.000054"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.653372" elapsed="0.000150"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.653594" elapsed="0.000053"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.653715" elapsed="0.000129"/>
+</kw>
+<arg>${EMP_CODE}</arg>
+<arg>${EMP_PASSWORD}</arg>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:55:51.652204" elapsed="0.001677"/>
+</kw>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:55:51.651287" elapsed="0.002683"/>
+</test>
+<test id="s1-s1-t3" name="Earn Points" line="18">
+<kw name="Get Promotion Rows" owner="db_keywords">
+<var>${rows}</var>
+<arg>D:\\POS_Automation\\tests/../data/${DB_FILE}</arg>
+<arg>Earn Points/Credits/Visits</arg>
+<arg>${ACTIVE_FROM}</arg>
+<arg>${SHEET}</arg>
+<arg>start_row=${BATCH_START}</arg>
+<arg>end_row=${BATCH_END}</arg>
+<doc>start_row/end_row are 1-indexed positions within the filtered result set,
+e.g. start_row=2, end_row=20 selects the 2nd through 20th matching rows.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.663882" elapsed="0.000125"/>
+</kw>
+<kw name="Group Rows By Promotion" owner="db_keywords">
+<var>${groups}</var>
+<arg>${rows}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.664115" elapsed="0.000042"/>
+</kw>
+<for flavor="IN">
+<iter>
+<if>
+<branch type="IF" condition="'${group}[trigger_type]' == 'Quantity'">
+<kw name="Get Length" owner="BuiltIn">
+<var>${bucket_count}</var>
+<arg>${group}[buckets]</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.664656" elapsed="0.000183"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_len}</var>
+<arg>${0}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.664931" elapsed="0.000118"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Length" owner="BuiltIn">
+<var>${bucket_len}</var>
+<arg>${bucket}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.665246" elapsed="0.000114"/>
+</kw>
+<if>
+<branch type="IF" condition="${bucket_len} &gt; ${max_len}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_len}</var>
+<arg>${bucket_len}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.665498" elapsed="0.000108"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.665424" elapsed="0.000212"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.665410" elapsed="0.000251"/>
+</if>
+<var name="${bucket}"/>
+<status status="PASS" start="2026-09-02T17:55:51.665184" elapsed="0.000498"/>
+</iter>
+<var>${bucket}</var>
+<value>@{group}[buckets]</value>
+<status status="PASS" start="2026-09-02T17:55:51.665095" elapsed="0.000609"/>
+</for>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${group}[promotion_code],${group}[promotion_name] (Quantity) มี ${bucket_count} bucket ต้องขายทั้งหมด ${max_len} บิล</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.665776" elapsed="0.000119"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Sell One From Each Bucket" owner="pos_keywords">
+<kw name="Clear Stray Error Dialog" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.666517" elapsed="0.000097"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}error_dialog_check.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.666694" elapsed="0.000068"/>
+</kw>
+<kw name="Screen Contains Text" owner="ocr_keywords">
+<var>${found}</var>
+<arg>${image}</arg>
+<arg>ไม่สามารถรับชำระ</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.666839" elapsed="0.000044"/>
+</kw>
+<if>
+<branch type="IF" condition="${found}">
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ESC}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.667019" elapsed="0.000064"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.667167" elapsed="0.000213"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.666941" elapsed="0.000469"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.666928" elapsed="0.000510"/>
+</if>
+<doc>เช็คด้วย OCR ก่อนว่ามี dialog error "ไม่สามารถรับชำระ" ค้างอยู่จากรอบก่อนหน้าไหม
+ถ้ามีจริงถึงจะกด ESC ปิด ถ้าไม่มี (เช่น อยู่หน้าขายของปกติ) จะไม่กด ESC เลย
+เพื่อกัน ESC หลุดออกไปหน้าเมนูหลักโดยไม่ตั้งใจ</doc>
+<status status="PASS" start="2026-09-02T17:55:51.666376" elapsed="0.001095"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Length" owner="BuiltIn">
+<var>${bucket_len}</var>
+<arg>${bucket}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.667958" elapsed="0.000211"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${pos}</var>
+<arg>${index} % ${bucket_len}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.668290" elapsed="0.000128"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${item}</var>
+<arg>${bucket}[${pos}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.668515" elapsed="0.000134"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>ขาย ${item}[entity_code],${item}[entity_name]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.668760" elapsed="0.000134"/>
+</kw>
+<kw name="Scan Product By Barcode" owner="pos_keywords">
+<kw name="Set Variable If" owner="BuiltIn">
+<var>${keys}</var>
+<arg>${qty} &gt; 1</arg>
+<arg>${qty}*${barcode}</arg>
+<arg>${barcode}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.669747" elapsed="0.000230"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.670108" elapsed="0.000108"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.670309" elapsed="0.000179"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${keys}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.670580" elapsed="0.000067"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.670725" elapsed="0.000165"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.670973" elapsed="0.000061"/>
+</kw>
+<arg>${item}[barcode]</arg>
+<arg>${qty}</arg>
+<doc>สแกน/กรอกบาร์โค้ดสินค้าและกด Enter เพื่อเพิ่มลงรายการขาย
+ถ้าจำนวน (qty) มากกว่า 1 จะคีย์รูปแบบ qty*barcode เช่น 2*8853002318602</doc>
+<status status="PASS" start="2026-09-02T17:55:51.669187" elapsed="0.001886"/>
+</kw>
+<var name="${bucket}"/>
+<status status="PASS" start="2026-09-02T17:55:51.667596" elapsed="0.003507"/>
+</iter>
+<var>${bucket}</var>
+<value>@{buckets}</value>
+<status status="PASS" start="2026-09-02T17:55:51.667523" elapsed="0.003613"/>
+</for>
+<kw name="Press Plus Key" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.671801" elapsed="0.000095"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.671982" elapsed="0.000166"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={Add}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.672233" elapsed="0.000062"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.672405" elapsed="0.000148"/>
+</kw>
+<doc>กดปุ่มบวก (+) บนคีย์บอร์ด</doc>
+<status status="PASS" start="2026-09-02T17:55:51.671256" elapsed="0.001337"/>
+</kw>
+<arg>${group}[buckets]</arg>
+<arg>${round}</arg>
+<arg>${group}[trigger_value]</arg>
+<doc>สแกนสินค้า 1 ชิ้นจากแต่ละ bucket (ตามตำแหน่ง index ที่ระบุ วนซ้ำเองถ้า index
+เกินความยาวของ bucket นั้นๆ ด้วย modulo) แล้วกดปุ่มบวก (+) ครั้งเดียวตอนจบ
+ใช้กับโปรที่ต้องซื้อสินค้า "คู่กัน" จากหลาย bucket ในบิลเดียว (เช่น bucketid=1 ถั่ว
++ bucketid=2 นม) ไม่ใช่เลือกตัวใดตัวหนึ่งแบบ Sell Items Until Threshold
+log entity_code/entity_name ของแต่ละชิ้นที่ขายในบิลนี้ไว้ด้วย เพื่อดูว่าบิลนี้ขายสินค้าอะไรบ้าง</doc>
+<status status="PASS" start="2026-09-02T17:55:51.666139" elapsed="0.006481"/>
+</kw>
+<kw name="Pay Without Amount Check" owner="pos_keywords">
+<if>
+<branch type="IF" condition="'${member_segmentation}' == 'All Members (card required)'">
+<kw name="Apply Member Barcode" owner="pos_keywords">
+<kw name="Click Member Button" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.673424" elapsed="0.000077"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-71,-192</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.673581" elapsed="0.000067"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.673718" elapsed="0.000154"/>
+</kw>
+<doc>คลิกปุ่ม "สมาชิก / ใช้ M-Stamp" (สำหรับโปรโมชั่นที่ต้องใช้บัตรสมาชิก)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.673292" elapsed="0.000619"/>
+</kw>
+<kw name="Get Member Barcode" owner="member_api_keywords">
+<var>${barcode}</var>
+<arg>${api_url}</arg>
+<arg>${api_token}</arg>
+<arg>${identify_id}</arg>
+<arg>${identify_value}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.673985" elapsed="0.000042"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.674106" elapsed="0.000067"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.674242" elapsed="0.000131"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${barcode}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.674448" elapsed="0.000057"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.674576" elapsed="0.000050"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.674691" elapsed="0.000127"/>
+</kw>
+<kw name="Click Member Confirm" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.675092" elapsed="0.000073"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.675239" elapsed="0.000144"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}member_confirm_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.675493" elapsed="0.000075"/>
+</kw>
+<kw name="Find Text Offset From Center" owner="ocr_keywords">
+<var>${offset}</var>
+<arg>${image}</arg>
+<arg>ยืนยัน</arg>
+<arg>left_frac=0.30</arg>
+<arg>top_frac=0.75</arg>
+<arg>right_frac=0.55</arg>
+<arg>bottom_frac=0.95</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.675644" elapsed="0.000111"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:${offset}[0],${offset}[1]</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.675837" elapsed="0.000040"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.675944" elapsed="0.000131"/>
+</kw>
+<doc>คลิกปุ่ม "ยืนยัน" บนหน้าจอ "ยินดีต้อนรับสมาชิก" (หลังกรอกบาร์โค้ดสมาชิก)
+หาตำแหน่งปุ่มด้วย OCR (อ่านคำว่า "ยืนยัน" บนภาพหน้าจอจริง) แทนการเดาพิกัดตายตัว
+เพื่อให้คลิกถูกตำแหน่งเสมอไม่ว่าหน้าต่างจะขนาด/ตำแหน่งใดก็ตาม</doc>
+<status status="PASS" start="2026-09-02T17:55:51.674942" elapsed="0.001168"/>
+</kw>
+<arg>${member_api_url}</arg>
+<arg>${member_api_token}</arg>
+<arg>${member_identify_id}</arg>
+<arg>${member_identify_value}</arg>
+<doc>กดปุ่ม "สมาชิก / ใช้ M-Stamp" แล้วเรียก API ขอบาร์โค้ดสมาชิก
+(AllMemberRequestBarcode) แล้วคีย์บาร์โค้ดที่ได้ลงในช่องของ POS ตามด้วย Enter
+จากนั้นกดปุ่ม "ยืนยัน" บนหน้าจอสรุปข้อมูลสมาชิก/M-Stamp ที่เด้งขึ้นมา</doc>
+<status status="PASS" start="2026-09-02T17:55:51.673119" elapsed="0.003020"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.672995" elapsed="0.003172"/>
+</branch>
+<branch type="ELSE IF" condition="'${member_segmentation}' != 'Apply Promotion to All Customers (no card required)'">
+<kw name="Fail" owner="BuiltIn">
+<arg>ไม่รู้จัก member_segmentation: ${member_segmentation}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.676271" elapsed="0.000128"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.676191" elapsed="0.000236"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.672976" elapsed="0.003471"/>
+</if>
+<kw name="Click Exact Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.676702" elapsed="0.000074"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-211,-25</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.676884" elapsed="0.000063"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.677017" elapsed="0.000140"/>
+</kw>
+<doc>คลิกปุ่ม "รับพอดี" (ชำระด้วยจำนวนเงินพอดี ไม่ต้องทอน)
+offset คำนวณจากตำแหน่งปุ่มจริงบนกริด เทียบกับจุดกึ่งกลางหน้าต่าง (ภาพหน้าจอขนาด 1602x667)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.676554" elapsed="0.000636"/>
+</kw>
+<kw name="Confirm Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.677440" elapsed="0.000070"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.677582" elapsed="0.000152"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={LEFT}{ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.677808" elapsed="0.000057"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.677933" elapsed="0.000130"/>
+</kw>
+<doc>ยืนยันกล่องข้อความ "ยืนยันรับชำระ" โดยเลือกปุ่ม "ใช่"
+(ปุ่ม "ไม่ใช่" เป็น default โฟกัสอยู่ ต้องกด Left ย้ายไปปุ่ม "ใช่" ก่อนกด Enter)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.677295" elapsed="0.000799"/>
+</kw>
+<arg>${group}[member_segmentation]</arg>
+<arg>${MEMBER_API_URL}</arg>
+<arg>${MEMBER_API_TOKEN}</arg>
+<arg>${MEMBER_IDENTIFY_ID}</arg>
+<arg>${MEMBER_IDENTIFY_VALUE}</arg>
+<doc>กดสมาชิก+ยืนยัน (ถ้าโปรโมชั่นนี้ต้องใช้บัตรสมาชิก) แล้วกด "รับพอดี" และยืนยัน
+การชำระ โดยไม่เช็คยอดที่ต้องชำระเลย (ใช้กับโปรที่ reward เป็นแต้ม/สแตมป์ ไม่ใช่ส่วนลดราคา
+จึงไม่มีค่าที่คาดไว้ให้เทียบ)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.672799" elapsed="0.005321"/>
+</kw>
+<var name="${round}"/>
+<status status="PASS" start="2026-09-02T17:55:51.665990" elapsed="0.012163"/>
+</iter>
+<var>${round}</var>
+<value>${max_len}</value>
+<status status="PASS" start="2026-09-02T17:55:51.665937" elapsed="0.012238"/>
+</for>
+<status status="PASS" start="2026-09-02T17:55:51.664556" elapsed="0.013643"/>
+</branch>
+<branch type="ELSE IF" condition="'${group}[trigger_type]' == 'ItemSpend'">
+<kw name="Get Length" owner="BuiltIn">
+<var>${barcode_count}</var>
+<arg>${group}[barcodes]</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.678292" elapsed="0.000110"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${group}[promotion_code],${group}[promotion_name] (ItemSpend) มีบาร์โค้ดทางเลือก ${barcode_count} ตัว ยอดขั้นต่ำ ${group}[trigger_value] บาท</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.678475" elapsed="0.000112"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${index}</var>
+<arg>${0}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.678658" elapsed="0.000103"/>
+</kw>
+<while condition="${index} &lt; ${barcode_count}">
+<iter>
+<kw name="Sell Until Payable Meets Threshold" owner="pos_keywords">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${index}</var>
+<arg>${start_index}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.679217" elapsed="0.000112"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${actual}</var>
+<arg>${0}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.679403" elapsed="0.000101"/>
+</kw>
+<while condition="${actual} &lt; ${trigger_value}">
+<iter>
+<kw name="Sell Items Until Threshold" owner="pos_keywords">
+<kw name="Clear Stray Error Dialog" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.680153" elapsed="0.000073"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}error_dialog_check.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.680305" elapsed="0.000067"/>
+</kw>
+<kw name="Screen Contains Text" owner="ocr_keywords">
+<var>${found}</var>
+<arg>${image}</arg>
+<arg>ไม่สามารถรับชำระ</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.680450" elapsed="0.000045"/>
+</kw>
+<if>
+<branch type="IF" condition="${found}">
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ESC}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.680626" elapsed="0.000057"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.680756" elapsed="0.000159"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.680554" elapsed="0.000389"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.680541" elapsed="0.000424"/>
+</if>
+<doc>เช็คด้วย OCR ก่อนว่ามี dialog error "ไม่สามารถรับชำระ" ค้างอยู่จากรอบก่อนหน้าไหม
+ถ้ามีจริงถึงจะกด ESC ปิด ถ้าไม่มี (เช่น อยู่หน้าขายของปกติ) จะไม่กด ESC เลย
+เพื่อกัน ESC หลุดออกไปหน้าเมนูหลักโดยไม่ตั้งใจ</doc>
+<status status="PASS" start="2026-09-02T17:55:51.680023" elapsed="0.000966"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<var>${count}</var>
+<arg>${barcodes}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.681063" elapsed="0.000111"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${index}</var>
+<arg>${start_index}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.681245" elapsed="0.000103"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${total}</var>
+<arg>${0}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.681418" elapsed="0.000097"/>
+</kw>
+<while condition="${total} &lt; ${trigger_value}">
+<iter>
+<if>
+<branch type="IF" condition="${index} &lt; ${count}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${barcode}</var>
+<arg>${barcodes}[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.681765" elapsed="0.000127"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.681694" elapsed="0.000229"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${barcode}</var>
+<arg>${barcodes}[-1]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.682009" elapsed="0.000127"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.681943" elapsed="0.000229"/>
+</branch>
+<status status="NOT RUN" start="2026-09-02T17:55:51.681683" elapsed="0.000507"/>
+</if>
+<kw name="Scan Product By Barcode" owner="pos_keywords">
+<kw name="Set Variable If" owner="BuiltIn">
+<var>${keys}</var>
+<arg>${qty} &gt; 1</arg>
+<arg>${qty}*${barcode}</arg>
+<arg>${barcode}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.682494" elapsed="0.000135"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.682713" elapsed="0.000079"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.682861" elapsed="0.000193"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${keys}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.683143" elapsed="0.000061"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.683279" elapsed="0.000132"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.683490" elapsed="0.000055"/>
+</kw>
+<arg>${barcode}</arg>
+<doc>สแกน/กรอกบาร์โค้ดสินค้าและกด Enter เพื่อเพิ่มลงรายการขาย
+ถ้าจำนวน (qty) มากกว่า 1 จะคีย์รูปแบบ qty*barcode เช่น 2*8853002318602</doc>
+<status status="PASS" start="2026-09-02T17:55:51.682321" elapsed="0.001261"/>
+</kw>
+<kw name="Get Amount Due From Screen" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<var>${window}</var>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.683855" elapsed="0.000070"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}payment_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.684006" elapsed="0.000068"/>
+</kw>
+<kw name="Read Amount From Image" owner="ocr_keywords">
+<var>${amount}</var>
+<arg>${image}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.684147" elapsed="0.000041"/>
+</kw>
+<return>
+<value>${amount}</value>
+<status status="PASS" start="2026-09-02T17:55:51.684223" elapsed="0.000020"/>
+</return>
+<var>${total}</var>
+<doc>แคปหน้าจอหน้าชำระเงินแล้วอ่านตัวเลข "ยอดที่ต้องชำระ" ด้วย OCR</doc>
+<status status="PASS" start="2026-09-02T17:55:51.683709" elapsed="0.000566"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>สแกน ${barcode} แล้ว ยอดรวมตอนนี้ ${total} บาท (เกณฑ์ ${trigger_value})</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.684345" elapsed="0.000144"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.684569" elapsed="0.000107"/>
+</kw>
+<status status="NOT RUN" start="2026-09-02T17:55:51.681568" elapsed="0.003137"/>
+</iter>
+<status status="NOT RUN" start="2026-09-02T17:55:51.681567" elapsed="0.003160"/>
+</while>
+<kw name="Press Plus Key" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.684988" elapsed="0.000074"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.685138" elapsed="0.000144"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={Add}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.685360" elapsed="0.000056"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.685488" elapsed="0.000127"/>
+</kw>
+<doc>กดปุ่มบวก (+) บนคีย์บอร์ด</doc>
+<status status="PASS" start="2026-09-02T17:55:51.684828" elapsed="0.000819"/>
+</kw>
+<return>
+<value>${index}</value>
+<status status="PASS" start="2026-09-02T17:55:51.685687" elapsed="0.000016"/>
+</return>
+<var>${index}</var>
+<arg>${barcodes}</arg>
+<arg>${trigger_value}</arg>
+<arg>${index}</arg>
+<doc>ขาย "1 บิล" จากกลุ่มบาร์โค้ดทางเลือกของ promotion_code เดียวกัน โดยเริ่ม
+สแกนจากตำแหน่ง start_index ในลิสต์ (ไม่ใช่เริ่มจากตัวแรกเสมอ — ใช้ต่อยอดจากบิลก่อนหน้าได้)
+วนสแกนทีละตัว เช็คยอดรวมหลังสแกนแต่ละครั้ง (อ่านจากกล่อง "ยอดที่ต้องชำระ" มุมขวาบน
+ซึ่งขึ้นตั้งแต่หน้าสแกนสินค้าแล้ว ไม่ต้องกด + ก่อน) จนกว่ายอดจะถึง trigger_value
+ถ้าสแกนจนหมดบาร์โค้ดในกลุ่มแล้วยังไม่ถึง จะสแกนบาร์โค้ดตัวสุดท้ายซ้ำไปเรื่อยๆ จนกว่าจะถึงเกณฑ์
+แล้วกดปุ่มบวก (+) ครั้งเดียวตอนจบบิลนี้เพื่อไปหน้าชำระเงิน
+คืนค่า index ตัวถัดไปที่ยังไม่ได้สแกน (ไว้ให้บิลถัดไปเริ่มต่อจากตรงนี้)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.679812" elapsed="0.005919"/>
+</kw>
+<kw name="Get Amount Due From Screen" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<var>${window}</var>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.686002" elapsed="0.000071"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}payment_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.686182" elapsed="0.000067"/>
+</kw>
+<kw name="Read Amount From Image" owner="ocr_keywords">
+<var>${amount}</var>
+<arg>${image}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.686323" elapsed="0.000039"/>
+</kw>
+<return>
+<value>${amount}</value>
+<status status="PASS" start="2026-09-02T17:55:51.686395" elapsed="0.000013"/>
+</return>
+<var>${actual}</var>
+<doc>แคปหน้าจอหน้าชำระเงินแล้วอ่านตัวเลข "ยอดที่ต้องชำระ" ด้วย OCR</doc>
+<status status="PASS" start="2026-09-02T17:55:51.685856" elapsed="0.000579"/>
+</kw>
+<if>
+<branch type="IF" condition="${actual} &lt; ${trigger_value}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>หลังกด + ยอดที่ต้องชำระ ${actual} ยังไม่ถึงเกณฑ์ ${trigger_value} (มีส่วนลดเพิ่มเข้ามา) วนกลับไปขายต่อ</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.686570" elapsed="0.000126"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.686773" elapsed="0.000065"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ESC}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.686920" elapsed="0.000053"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.687041" elapsed="0.000141"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.686493" elapsed="0.000717"/>
+</branch>
+<status status="NOT RUN" start="2026-09-02T17:55:51.686482" elapsed="0.000750"/>
+</if>
+<status status="NOT RUN" start="2026-09-02T17:55:51.679546" elapsed="0.007705"/>
+</iter>
+<status status="NOT RUN" start="2026-09-02T17:55:51.679544" elapsed="0.007725"/>
+</while>
+<return>
+<value>${index}</value>
+<status status="PASS" start="2026-09-02T17:55:51.687294" elapsed="0.000012"/>
+</return>
+<var>${index}</var>
+<arg>${group}[barcodes]</arg>
+<arg>${group}[trigger_value]</arg>
+<arg>${index}</arg>
+<doc>ขาย "1 บิล" เหมือน Sell Items Until Threshold แต่เพิ่มการเช็คซ้ำหลังกด +
+เพราะพบเคสจริงที่ตอนสแกน (ก่อนกด +) ยอดดูเหมือนถึงเกณฑ์แล้ว (เช่น 424 &gt;= 399) แต่พอกด +
+ไปหน้าชำระเงินแล้ว มีส่วนลดพิเศษเข้ามาเพิ่ม (เช่น -45) ทำให้ "ยอดที่ต้องชำระ" จริงเหลือ
+ต่ำกว่าเกณฑ์ (379 &lt; 399) ถ้าเจอแบบนี้จะกด ESC ย้อนกลับไปหน้าสแกนสินค้า (ตะกร้าเดิมไม่หาย)
+แล้วขายเพิ่มต่อจนกว่ายอดที่ต้องชำระหลังกด + จะถึงเกณฑ์จริงๆ คืนค่า index ตัวถัดไปที่ยังไม่ได้สแกน</doc>
+<status status="PASS" start="2026-09-02T17:55:51.679047" elapsed="0.008284"/>
+</kw>
+<kw name="Pay For Item Spend" owner="pos_keywords">
+<if>
+<branch type="IF" condition="'${member_segmentation}' == 'All Members (card required)'">
+<kw name="Apply Member Barcode" owner="pos_keywords">
+<kw name="Click Member Button" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.688088" elapsed="0.000074"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-71,-192</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.688241" elapsed="0.000058"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.688368" elapsed="0.000146"/>
+</kw>
+<doc>คลิกปุ่ม "สมาชิก / ใช้ M-Stamp" (สำหรับโปรโมชั่นที่ต้องใช้บัตรสมาชิก)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.687961" elapsed="0.000587"/>
+</kw>
+<kw name="Get Member Barcode" owner="member_api_keywords">
+<var>${barcode}</var>
+<arg>${api_url}</arg>
+<arg>${api_token}</arg>
+<arg>${identify_id}</arg>
+<arg>${identify_value}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.688614" elapsed="0.000039"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.688727" elapsed="0.000061"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.688856" elapsed="0.000145"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${barcode}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.689077" elapsed="0.000060"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.689212" elapsed="0.000051"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.689335" elapsed="0.000136"/>
+</kw>
+<kw name="Click Member Confirm" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.689731" elapsed="0.000069"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.689870" elapsed="0.000296"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}member_confirm_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.690368" elapsed="0.000132"/>
+</kw>
+<kw name="Find Text Offset From Center" owner="ocr_keywords">
+<var>${offset}</var>
+<arg>${image}</arg>
+<arg>ยืนยัน</arg>
+<arg>left_frac=0.30</arg>
+<arg>top_frac=0.75</arg>
+<arg>right_frac=0.55</arg>
+<arg>bottom_frac=0.95</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.690980" elapsed="0.000157"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:${offset}[0],${offset}[1]</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.691256" elapsed="0.000044"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.691416" elapsed="0.000198"/>
+</kw>
+<doc>คลิกปุ่ม "ยืนยัน" บนหน้าจอ "ยินดีต้อนรับสมาชิก" (หลังกรอกบาร์โค้ดสมาชิก)
+หาตำแหน่งปุ่มด้วย OCR (อ่านคำว่า "ยืนยัน" บนภาพหน้าจอจริง) แทนการเดาพิกัดตายตัว
+เพื่อให้คลิกถูกตำแหน่งเสมอไม่ว่าหน้าต่างจะขนาด/ตำแหน่งใดก็ตาม</doc>
+<status status="PASS" start="2026-09-02T17:55:51.689589" elapsed="0.002070"/>
+</kw>
+<arg>${member_api_url}</arg>
+<arg>${member_api_token}</arg>
+<arg>${member_identify_id}</arg>
+<arg>${member_identify_value}</arg>
+<doc>กดปุ่ม "สมาชิก / ใช้ M-Stamp" แล้วเรียก API ขอบาร์โค้ดสมาชิก
+(AllMemberRequestBarcode) แล้วคีย์บาร์โค้ดที่ได้ลงในช่องของ POS ตามด้วย Enter
+จากนั้นกดปุ่ม "ยืนยัน" บนหน้าจอสรุปข้อมูลสมาชิก/M-Stamp ที่เด้งขึ้นมา</doc>
+<status status="PASS" start="2026-09-02T17:55:51.687794" elapsed="0.003899"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.687681" elapsed="0.004051"/>
+</branch>
+<branch type="ELSE IF" condition="'${member_segmentation}' != 'Apply Promotion to All Customers (no card required)'">
+<kw name="Fail" owner="BuiltIn">
+<arg>ไม่รู้จัก member_segmentation: ${member_segmentation}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.691850" elapsed="0.000124"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.691764" elapsed="0.000239"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.687668" elapsed="0.004355"/>
+</if>
+<kw name="Get Amount Due From Screen" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<var>${window}</var>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.692336" elapsed="0.000086"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}payment_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.692501" elapsed="0.000066"/>
+</kw>
+<kw name="Read Amount From Image" owner="ocr_keywords">
+<var>${amount}</var>
+<arg>${image}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.692642" elapsed="0.000040"/>
+</kw>
+<return>
+<value>${amount}</value>
+<status status="PASS" start="2026-09-02T17:55:51.692713" elapsed="0.000015"/>
+</return>
+<var>${actual}</var>
+<doc>แคปหน้าจอหน้าชำระเงินแล้วอ่านตัวเลข "ยอดที่ต้องชำระ" ด้วย OCR</doc>
+<status status="PASS" start="2026-09-02T17:55:51.692162" elapsed="0.000596"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${actual} &gt;= ${trigger_value}</arg>
+<arg>msg=บาร์โค้ด ${barcode}: ยอดที่ต้องชำระ (${actual}) ไม่ถึงเกณฑ์ trigger_value (${trigger_value})</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.692823" elapsed="0.000184"/>
+</kw>
+<kw name="Click Exact Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.693277" elapsed="0.000075"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-211,-25</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.693429" elapsed="0.000057"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.693556" elapsed="0.000150"/>
+</kw>
+<doc>คลิกปุ่ม "รับพอดี" (ชำระด้วยจำนวนเงินพอดี ไม่ต้องทอน)
+offset คำนวณจากตำแหน่งปุ่มจริงบนกริด เทียบกับจุดกึ่งกลางหน้าต่าง (ภาพหน้าจอขนาด 1602x667)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.693127" elapsed="0.000614"/>
+</kw>
+<kw name="Confirm Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.693983" elapsed="0.000063"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.694114" elapsed="0.000139"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={LEFT}{ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.694325" elapsed="0.000058"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.694458" elapsed="0.000138"/>
+</kw>
+<doc>ยืนยันกล่องข้อความ "ยืนยันรับชำระ" โดยเลือกปุ่ม "ใช่"
+(ปุ่ม "ไม่ใช่" เป็น default โฟกัสอยู่ ต้องกด Left ย้ายไปปุ่ม "ใช่" ก่อนกด Enter)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.693847" elapsed="0.000784"/>
+</kw>
+<arg>${group}[promotion_code]</arg>
+<arg>${group}[trigger_value]</arg>
+<arg>${group}[member_segmentation]</arg>
+<arg>${MEMBER_API_URL}</arg>
+<arg>${MEMBER_API_TOKEN}</arg>
+<arg>${MEMBER_IDENTIFY_ID}</arg>
+<arg>${MEMBER_IDENTIFY_VALUE}</arg>
+<doc>สำหรับโปรโมชั่น reward_type = "Earn Points/Credits/Visits" ที่ trigger_type = "ItemSpend"
+ที่นี่ trigger_value ไม่ใช่จำนวนชิ้น แต่เป็น "ยอดเงินขั้นต่ำ (บาท)" ที่ต้องซื้อสินค้านี้ให้ถึง
+เช่น trigger_value=399 ต้องซื้อสินค้าจนราคารวมของชิ้นนี้ &gt;= 399 บาท ถึงจะเข้าเงื่อนไข
+(ไม่ใช่การเทียบเท่ากันตรงๆ เหมือน New Price/Free Item)
+กดสมาชิก+ยืนยัน (ถ้าโปรโมชั่นนี้ต้องใช้บัตรสมาชิก) ก่อนเช็คราคาเสมอ จากนั้นกด "รับพอดี" และยืนยันการชำระ</doc>
+<status status="PASS" start="2026-09-02T17:55:51.687510" elapsed="0.007147"/>
+</kw>
+<status status="NOT RUN" start="2026-09-02T17:55:51.678806" elapsed="0.015891"/>
+</iter>
+<status status="NOT RUN" start="2026-09-02T17:55:51.678805" elapsed="0.015911"/>
+</while>
+<status status="PASS" start="2026-09-02T17:55:51.678217" elapsed="0.016543"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" owner="BuiltIn">
+<arg>ไม่รู้จัก trigger_type: ${group}[trigger_type] (promotion_code ${group}[promotion_code])</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.694853" elapsed="0.000131"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.694780" elapsed="0.000232"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.664535" elapsed="0.030494"/>
+</if>
+<var name="${group}"/>
+<status status="PASS" start="2026-09-02T17:55:51.664476" elapsed="0.030576"/>
+</iter>
+<var>${group}</var>
+<value>@{groups}</value>
+<status status="PASS" start="2026-09-02T17:55:51.664217" elapsed="0.030855"/>
+</for>
+<doc>ดึงรายการโปรโมชั่น Earn Points/Credits/Visits ในช่วง BATCH_START/BATCH_END จาก
+ฐานข้อมูล "โดยไม่กรอง trigger_type" (เพื่อให้ตำแหน่ง row นับรวมทุก trigger_type ตัวเดียวกับที่
+เห็นตอนดูข้อมูลทั้งหมด ไม่ใช่นับแยกเฉพาะกลุ่ม) จัดกลุ่มตาม promotion_code โดยรักษาลำดับที่
+เจอในฐานข้อมูลไว้ (Group Rows By Promotion) แล้ววนทีละกลุ่ม "ตามลำดับที่เจอจริง" (เจอ
+Quantity ก่อนก็ทำ Quantity ก่อน เจอ ItemSpend ก็ทำ ItemSpend ตามนั้น ไม่ใช่แยกทำ ItemSpend
+ทั้งหมดก่อนแล้วค่อยทำ Quantity ทีหลัง) โดยเช็ค trigger_type ของแต่ละกลุ่มด้วย IF:
+- Quantity: ต้องซื้อสินค้า "คู่กัน" จากหลาย bucket ในบิลเดียว (เช่น bucketid=1 ถั่ว
+  + bucketid=2 นม) ขายเป็นหลายบิล บิลละ 1 ชิ้นจากแต่ละ bucket (วนซ้ำ bucket ที่สั้นกว่า
+  ด้วย modulo) จนกว่าทุก bucket จะถูกใช้ครบทุกตัวอย่างน้อยคนละ 1 ครั้ง เช็คแค่
+  member_segmentation ไม่เช็คราคา (reward เป็นแต้ม/สแตมป์ ไม่ใช่ส่วนลดราคา)
+- ItemSpend: trigger_value เป็นยอดเงินขั้นต่ำ (บาท) ไม่ใช่จำนวนชิ้น ขายเป็น "หลายบิล"
+  ต่อเนื่องกัน บิลแรกขายบาร์โค้ดตัวแรกๆ จนครบเกณฑ์ (Sell Until Payable Meets Threshold)
+  แล้วจ่ายจบบิล (Pay For Item Spend) บิลถัดไปขายต่อจากบาร์โค้ดตัวที่ค้างไว้ วนแบบนี้จนกว่า
+  จะขายครบทุกบาร์โค้ดในกลุ่ม (ถ้าบิลสุดท้ายบาร์โค้ดที่เหลือไม่พอครบเกณฑ์ จะขายบาร์โค้ดตัว
+  สุดท้ายซ้ำ)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.654148" elapsed="0.041010"/>
+</test>
+<kw name="Close Current Window" owner="RPA.Windows" type="TEARDOWN">
+<tag>window</tag>
+<doc>Closes current active window or logs a warning message.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.695593" elapsed="0.000041"/>
+</kw>
+<doc>ทดสอบขายสินค้าตามโปรโมชั่น Earn Points/Credits/Visits (trigger_type = ItemSpend/Quantity) จากฐานข้อมูล ประมวลผลตามลำดับที่พบในฐานข้อมูลจริง</doc>
+<status status="PASS" start="2026-09-02T17:55:50.434088" elapsed="1.261578"/>
+</suite>
+<suite id="s1-s2" name="New Price" source="D:\POS_Automation\tests\New Price.robot">
+<test id="s1-s2-t1" name="Open VNC" line="10">
+<kw name="Open VNC And Connect" owner="pos_keywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Run Process" owner="Process">
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.705653" elapsed="0.000793"/>
+</kw>
+<arg>Run Process</arg>
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-09-02T17:55:51.705355" elapsed="0.001335"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.706970" elapsed="0.000386"/>
+</kw>
+<kw name="Windows Run" owner="RPA.Windows">
+<arg>${vnc_path}</arg>
+<tag>window</tag>
+<doc>Use Windows Run window to launch an application.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.707603" elapsed="0.000085"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.707796" elapsed="0.000217"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.708120" elapsed="0.000128"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${server_ip}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.708373" elapsed="0.000084"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>name:Connect</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.708549" elapsed="0.000078"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>regex:.*Authentication.*</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.709035" elapsed="0.000077"/>
+</kw>
+<arg>6x</arg>
+<arg>2s</arg>
+<arg>Control Window</arg>
+<arg>regex:.*Authentication.*</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-09-02T17:55:51.708742" elapsed="0.000405"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${vnc_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.709232" elapsed="0.000062"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>name:Login</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.709375" elapsed="0.000059"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.709512" elapsed="0.000171"/>
+</kw>
+<kw name="Arrange Windows Side By Side" owner="window_keywords">
+<arg>vncviewer.exe</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.709762" elapsed="0.000053"/>
+</kw>
+<arg>${VNC}</arg>
+<arg>${SERVER_IP}</arg>
+<arg>${VNC_PASSWORD}</arg>
+<doc>เปิด UltraVNC Viewer เชื่อมต่อไปยัง server และล็อกอินผ่าน VNC</doc>
+<status status="PASS" start="2026-09-02T17:55:51.705131" elapsed="0.004719"/>
+</kw>
+<doc>เปิดโปรแกรม VNC</doc>
+<status status="PASS" start="2026-09-02T17:55:51.704621" elapsed="0.005381"/>
+</test>
+<test id="s1-s2-t2" name="login Pos" line="14">
+<kw name="Login To POS" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.711169" elapsed="0.000081"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.711333" elapsed="0.000166"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${emp_code}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.711587" elapsed="0.000059"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.711723" elapsed="0.000053"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${emp_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.711849" elapsed="0.000049"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.711985" elapsed="0.000049"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.712103" elapsed="0.000149"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.712336" elapsed="0.000055"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.712511" elapsed="0.000138"/>
+</kw>
+<arg>${EMP_CODE}</arg>
+<arg>${EMP_PASSWORD}</arg>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:55:51.710995" elapsed="0.001691"/>
+</kw>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:55:51.710203" elapsed="0.002572"/>
+</test>
+<test id="s1-s2-t3" name="New Price" line="18">
+<kw name="Get Promotion Rows" owner="db_keywords">
+<var>${rows}</var>
+<arg>D:\\POS_Automation\\tests/../data/${DB_FILE}</arg>
+<arg>New Price</arg>
+<arg>${ACTIVE_FROM}</arg>
+<arg>${SHEET}</arg>
+<arg>${BATCH_START}</arg>
+<arg>${BATCH_END}</arg>
+<doc>start_row/end_row are 1-indexed positions within the filtered result set,
+e.g. start_row=2, end_row=20 selects the 2nd through 20th matching rows.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.714836" elapsed="0.000080"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${row}[promotion_code],${row}[promotion_name],${row}[entity_code],${row}[entity_name],${row}[barcode] จำนวน ${row}[trigger_value]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.715121" elapsed="0.000537"/>
+</kw>
+<kw name="Sell Product" owner="pos_keywords">
+<kw name="Clear Stray Error Dialog" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.716188" elapsed="0.000078"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}error_dialog_check.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.716350" elapsed="0.000067"/>
+</kw>
+<kw name="Screen Contains Text" owner="ocr_keywords">
+<var>${found}</var>
+<arg>${image}</arg>
+<arg>ไม่สามารถรับชำระ</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.716494" elapsed="0.000045"/>
+</kw>
+<if>
+<branch type="IF" condition="${found}">
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ESC}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.716677" elapsed="0.000057"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.716806" elapsed="0.000146"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.716604" elapsed="0.000375"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.716589" elapsed="0.000413"/>
+</if>
+<doc>เช็คด้วย OCR ก่อนว่ามี dialog error "ไม่สามารถรับชำระ" ค้างอยู่จากรอบก่อนหน้าไหม
+ถ้ามีจริงถึงจะกด ESC ปิด ถ้าไม่มี (เช่น อยู่หน้าขายของปกติ) จะไม่กด ESC เลย
+เพื่อกัน ESC หลุดออกไปหน้าเมนูหลักโดยไม่ตั้งใจ</doc>
+<status status="PASS" start="2026-09-02T17:55:51.716044" elapsed="0.000983"/>
+</kw>
+<kw name="Scan Product By Barcode" owner="pos_keywords">
+<kw name="Set Variable If" owner="BuiltIn">
+<var>${keys}</var>
+<arg>${qty} &gt; 1</arg>
+<arg>${qty}*${barcode}</arg>
+<arg>${barcode}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.717301" elapsed="0.000135"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.717516" elapsed="0.000068"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.717653" elapsed="0.000131"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${keys}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.717858" elapsed="0.000055"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.717998" elapsed="0.000144"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.718217" elapsed="0.000054"/>
+</kw>
+<arg>${barcode}</arg>
+<arg>${qty}</arg>
+<doc>สแกน/กรอกบาร์โค้ดสินค้าและกด Enter เพื่อเพิ่มลงรายการขาย
+ถ้าจำนวน (qty) มากกว่า 1 จะคีย์รูปแบบ qty*barcode เช่น 2*8853002318602</doc>
+<status status="PASS" start="2026-09-02T17:55:51.717141" elapsed="0.001164"/>
+</kw>
+<kw name="Press Plus Key" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.718567" elapsed="0.000068"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.718704" elapsed="0.000135"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={Add}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.718909" elapsed="0.000057"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.719035" elapsed="0.000122"/>
+</kw>
+<doc>กดปุ่มบวก (+) บนคีย์บอร์ด</doc>
+<status status="PASS" start="2026-09-02T17:55:51.718432" elapsed="0.000756"/>
+</kw>
+<arg>${row}[barcode]</arg>
+<arg>${row}[trigger_value]</arg>
+<doc>ขายสินค้า: สแกนบาร์โค้ดแล้วกดปุ่มบวก (+) เพื่อเพิ่มลงรายการขาย</doc>
+<status status="PASS" start="2026-09-02T17:55:51.715794" elapsed="0.003419"/>
+</kw>
+<kw name="Pay For Product" owner="pos_keywords">
+<if>
+<branch type="IF" condition="'${member_segmentation}' == 'All Members (card required)'">
+<kw name="Apply Member Barcode" owner="pos_keywords">
+<kw name="Click Member Button" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.719920" elapsed="0.000081"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-71,-192</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.720079" elapsed="0.000057"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.720206" elapsed="0.000150"/>
+</kw>
+<doc>คลิกปุ่ม "สมาชิก / ใช้ M-Stamp" (สำหรับโปรโมชั่นที่ต้องใช้บัตรสมาชิก)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.719799" elapsed="0.000593"/>
+</kw>
+<kw name="Get Member Barcode" owner="member_api_keywords">
+<var>${barcode}</var>
+<arg>${api_url}</arg>
+<arg>${api_token}</arg>
+<arg>${identify_id}</arg>
+<arg>${identify_value}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.720465" elapsed="0.000040"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.720580" elapsed="0.000064"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.720713" elapsed="0.000131"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${barcode}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.720916" elapsed="0.000055"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.721040" elapsed="0.000049"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.721155" elapsed="0.000122"/>
+</kw>
+<kw name="Click Member Confirm" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.721522" elapsed="0.000064"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.721655" elapsed="0.000136"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}member_confirm_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.721866" elapsed="0.000069"/>
+</kw>
+<kw name="Find Text Offset From Center" owner="ocr_keywords">
+<var>${offset}</var>
+<arg>${image}</arg>
+<arg>ยืนยัน</arg>
+<arg>left_frac=0.30</arg>
+<arg>top_frac=0.75</arg>
+<arg>right_frac=0.55</arg>
+<arg>bottom_frac=0.95</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.722018" elapsed="0.000100"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:${offset}[0],${offset}[1]</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.722196" elapsed="0.000039"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.722299" elapsed="0.000132"/>
+</kw>
+<doc>คลิกปุ่ม "ยืนยัน" บนหน้าจอ "ยินดีต้อนรับสมาชิก" (หลังกรอกบาร์โค้ดสมาชิก)
+หาตำแหน่งปุ่มด้วย OCR (อ่านคำว่า "ยืนยัน" บนภาพหน้าจอจริง) แทนการเดาพิกัดตายตัว
+เพื่อให้คลิกถูกตำแหน่งเสมอไม่ว่าหน้าต่างจะขนาด/ตำแหน่งใดก็ตาม</doc>
+<status status="PASS" start="2026-09-02T17:55:51.721388" elapsed="0.001075"/>
+</kw>
+<arg>${member_api_url}</arg>
+<arg>${member_api_token}</arg>
+<arg>${member_identify_id}</arg>
+<arg>${member_identify_value}</arg>
+<doc>กดปุ่ม "สมาชิก / ใช้ M-Stamp" แล้วเรียก API ขอบาร์โค้ดสมาชิก
+(AllMemberRequestBarcode) แล้วคีย์บาร์โค้ดที่ได้ลงในช่องของ POS ตามด้วย Enter
+จากนั้นกดปุ่ม "ยืนยัน" บนหน้าจอสรุปข้อมูลสมาชิก/M-Stamp ที่เด้งขึ้นมา</doc>
+<status status="PASS" start="2026-09-02T17:55:51.719644" elapsed="0.002848"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.719532" elapsed="0.003051"/>
+</branch>
+<branch type="ELSE IF" condition="'${member_segmentation}' != 'Apply Promotion to All Customers (no card required)'">
+<kw name="Fail" owner="BuiltIn">
+<arg>ไม่รู้จัก member_segmentation: ${member_segmentation}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.722766" elapsed="0.000223"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.722639" elapsed="0.000396"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.719518" elapsed="0.003541"/>
+</if>
+<kw name="Get Amount Due From Screen" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<var>${window}</var>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.723379" elapsed="0.000093"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}payment_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.723609" elapsed="0.000083"/>
+</kw>
+<kw name="Read Amount From Image" owner="ocr_keywords">
+<var>${amount}</var>
+<arg>${image}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.723789" elapsed="0.000050"/>
+</kw>
+<return>
+<value>${amount}</value>
+<status status="PASS" start="2026-09-02T17:55:51.723879" elapsed="0.000017"/>
+</return>
+<var>${actual}</var>
+<doc>แคปหน้าจอหน้าชำระเงินแล้วอ่านตัวเลข "ยอดที่ต้องชำระ" ด้วย OCR</doc>
+<status status="PASS" start="2026-09-02T17:55:51.723197" elapsed="0.000733"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected_amount}</arg>
+<arg>msg=บาร์โค้ด ${barcode}: ยอดที่ต้องชำระ (${actual}) ไม่ตรงกับ reward_value (${expected_amount})</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.724011" elapsed="0.000211"/>
+</kw>
+<kw name="Click Exact Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.724487" elapsed="0.000072"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-211,-25</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.724632" elapsed="0.000056"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.724756" elapsed="0.000142"/>
+</kw>
+<doc>คลิกปุ่ม "รับพอดี" (ชำระด้วยจำนวนเงินพอดี ไม่ต้องทอน)
+offset คำนวณจากตำแหน่งปุ่มจริงบนกริด เทียบกับจุดกึ่งกลางหน้าต่าง (ภาพหน้าจอขนาด 1602x667)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.724343" elapsed="0.000589"/>
+</kw>
+<kw name="Confirm Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.725180" elapsed="0.000069"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.725322" elapsed="0.000150"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={LEFT}{ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.725546" elapsed="0.000056"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.725672" elapsed="0.000129"/>
+</kw>
+<doc>ยืนยันกล่องข้อความ "ยืนยันรับชำระ" โดยเลือกปุ่ม "ใช่"
+(ปุ่ม "ไม่ใช่" เป็น default โฟกัสอยู่ ต้องกด Left ย้ายไปปุ่ม "ใช่" ก่อนกด Enter)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.725040" elapsed="0.000793"/>
+</kw>
+<arg>${row}[barcode]</arg>
+<arg>${row}[reward_value]</arg>
+<arg>${row}[member_segmentation]</arg>
+<arg>${MEMBER_API_URL}</arg>
+<arg>${MEMBER_API_TOKEN}</arg>
+<arg>${MEMBER_IDENTIFY_ID}</arg>
+<arg>${MEMBER_IDENTIFY_VALUE}</arg>
+<doc>กดสมาชิก+ยืนยัน (ถ้าโปรโมชั่นนี้ต้องใช้บัตรสมาชิก) แล้วเช็คยอดที่ต้องชำระบนหน้าจอ
+ให้ตรงกับที่คาดไว้ แล้วกด "รับพอดี" และยืนยันการชำระ
+(member_segmentation = "All Members (card required)" ต้องกดสมาชิก+ยืนยันก่อนเช็คยอดเสมอ
+เพราะราคาโปรโมชั่นจะยังไม่ขึ้นจนกว่าจะยืนยันสมาชิกแล้ว)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.719361" elapsed="0.006498"/>
+</kw>
+<var name="${row}"/>
+<status status="PASS" start="2026-09-02T17:55:51.715054" elapsed="0.010841"/>
+</iter>
+<var>${row}</var>
+<value>@{rows}</value>
+<status status="PASS" start="2026-09-02T17:55:51.714981" elapsed="0.010937"/>
+</for>
+<doc>ดึงรายการโปรโมชั่น New Price จากฐานข้อมูล แล้ววนขายทีละรายการต่อเนื่องกันโดยไม่ login ใหม่
+แต่ละรายการแยกเป็น 2 ขั้นตอนชัดเจน: ขายสินค้า (Sell Product) แล้วชำระยอดและชำระเงิน (Pay For Product)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.712936" elapsed="0.013066"/>
+</test>
+<kw name="Close Current Window" owner="RPA.Windows" type="TEARDOWN">
+<tag>window</tag>
+<doc>Closes current active window or logs a warning message.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.726320" elapsed="0.000039"/>
+</kw>
+<doc>ทดสอบขายสินค้าตามโปรโมชั่น New Price จากฐานข้อมูล</doc>
+<status status="PASS" start="2026-09-02T17:55:51.696964" elapsed="0.029426"/>
+</suite>
+<suite id="s1-s3" name="Free Item" source="D:\POS_Automation\tests\Free Item.robot">
+<test id="s1-s3-t1" name="Open VNC" line="10">
+<kw name="Open VNC And Connect" owner="pos_keywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Run Process" owner="Process">
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.735817" elapsed="0.000147"/>
+</kw>
+<arg>Run Process</arg>
+<arg>taskkill</arg>
+<arg>/IM</arg>
+<arg>vncviewer.exe</arg>
+<arg>/F</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-09-02T17:55:51.735538" elapsed="0.000478"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.736099" elapsed="0.000155"/>
+</kw>
+<kw name="Windows Run" owner="RPA.Windows">
+<arg>${vnc_path}</arg>
+<tag>window</tag>
+<doc>Use Windows Run window to launch an application.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.736343" elapsed="0.000045"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.736461" elapsed="0.000137"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.736673" elapsed="0.000080"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${server_ip}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.736857" elapsed="0.000063"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>name:Connect</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.736993" elapsed="0.000062"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>regex:.*Authentication.*</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.737364" elapsed="0.000066"/>
+</kw>
+<arg>6x</arg>
+<arg>2s</arg>
+<arg>Control Window</arg>
+<arg>regex:.*Authentication.*</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-09-02T17:55:51.737141" elapsed="0.000321"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${vnc_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.737553" elapsed="0.000061"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>name:Login</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.737690" elapsed="0.000058"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.737819" elapsed="0.000151"/>
+</kw>
+<kw name="Arrange Windows Side By Side" owner="window_keywords">
+<arg>vncviewer.exe</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.738043" elapsed="0.000044"/>
+</kw>
+<arg>${VNC}</arg>
+<arg>${SERVER_IP}</arg>
+<arg>${VNC_PASSWORD}</arg>
+<doc>เปิด UltraVNC Viewer เชื่อมต่อไปยัง server และล็อกอินผ่าน VNC</doc>
+<status status="PASS" start="2026-09-02T17:55:51.735319" elapsed="0.002798"/>
+</kw>
+<doc>เปิดโปรแกรม VNC</doc>
+<status status="PASS" start="2026-09-02T17:55:51.734829" elapsed="0.003378"/>
+</test>
+<test id="s1-s3-t2" name="login Pos" line="14">
+<kw name="Login To POS" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.739773" elapsed="0.000351"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.740377" elapsed="0.000475"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${emp_code}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.740978" elapsed="0.000093"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.741185" elapsed="0.000084"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${emp_password}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.741367" elapsed="0.000074"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.741520" elapsed="0.000063"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.741656" elapsed="0.000191"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.741947" elapsed="0.000056"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.742076" elapsed="0.000138"/>
+</kw>
+<arg>${EMP_CODE}</arg>
+<arg>${EMP_PASSWORD}</arg>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:55:51.739420" elapsed="0.002835"/>
+</kw>
+<doc>ล็อกอินเข้าระบบ POS ด้วยรหัสพนักงานและรหัสผ่าน</doc>
+<status status="PASS" start="2026-09-02T17:55:51.738358" elapsed="0.004023"/>
+</test>
+<test id="s1-s3-t3" name="Free Item" line="18">
+<kw name="Get Promotion Rows" owner="db_keywords">
+<var>${rows}</var>
+<arg>D:\\POS_Automation\\tests/../data/${DB_FILE}</arg>
+<arg>Free Item</arg>
+<arg>${ACTIVE_FROM}</arg>
+<arg>${SHEET}</arg>
+<arg>${BATCH_START}</arg>
+<arg>${BATCH_END}</arg>
+<doc>start_row/end_row are 1-indexed positions within the filtered result set,
+e.g. start_row=2, end_row=20 selects the 2nd through 20th matching rows.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.745123" elapsed="0.000087"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${row}[promotion_code],${row}[promotion_name],${row}[entity_code],${row}[entity_name],${row}[barcode] จำนวน ${row}[trigger_value]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.745427" elapsed="0.000146"/>
+</kw>
+<kw name="Sell Product" owner="pos_keywords">
+<kw name="Clear Stray Error Dialog" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.746089" elapsed="0.000097"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}error_dialog_check.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.746274" elapsed="0.000070"/>
+</kw>
+<kw name="Screen Contains Text" owner="ocr_keywords">
+<var>${found}</var>
+<arg>${image}</arg>
+<arg>ไม่สามารถรับชำระ</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.746421" elapsed="0.000042"/>
+</kw>
+<if>
+<branch type="IF" condition="${found}">
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ESC}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.746615" elapsed="0.000056"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.746744" elapsed="0.000161"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.746536" elapsed="0.000398"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.746514" elapsed="0.000443"/>
+</if>
+<doc>เช็คด้วย OCR ก่อนว่ามี dialog error "ไม่สามารถรับชำระ" ค้างอยู่จากรอบก่อนหน้าไหม
+ถ้ามีจริงถึงจะกด ESC ปิด ถ้าไม่มี (เช่น อยู่หน้าขายของปกติ) จะไม่กด ESC เลย
+เพื่อกัน ESC หลุดออกไปหน้าเมนูหลักโดยไม่ตั้งใจ</doc>
+<status status="PASS" start="2026-09-02T17:55:51.745949" elapsed="0.001034"/>
+</kw>
+<kw name="Scan Product By Barcode" owner="pos_keywords">
+<kw name="Set Variable If" owner="BuiltIn">
+<var>${keys}</var>
+<arg>${qty} &gt; 1</arg>
+<arg>${qty}*${barcode}</arg>
+<arg>${barcode}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.747309" elapsed="0.000146"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.747540" elapsed="0.000198"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.747881" elapsed="0.000233"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${keys}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.748244" elapsed="0.000076"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.748414" elapsed="0.000179"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.748687" elapsed="0.000069"/>
+</kw>
+<arg>${barcode}</arg>
+<arg>${qty}</arg>
+<doc>สแกน/กรอกบาร์โค้ดสินค้าและกด Enter เพื่อเพิ่มลงรายการขาย
+ถ้าจำนวน (qty) มากกว่า 1 จะคีย์รูปแบบ qty*barcode เช่น 2*8853002318602</doc>
+<status status="PASS" start="2026-09-02T17:55:51.747135" elapsed="0.001669"/>
+</kw>
+<kw name="Press Plus Key" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.749126" elapsed="0.000098"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.749308" elapsed="0.000163"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={Add}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.749556" elapsed="0.000076"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.749711" elapsed="0.000143"/>
+</kw>
+<doc>กดปุ่มบวก (+) บนคีย์บอร์ด</doc>
+<status status="PASS" start="2026-09-02T17:55:51.748942" elapsed="0.000948"/>
+</kw>
+<arg>${row}[barcode]</arg>
+<arg>${row}[trigger_value]</arg>
+<doc>ขายสินค้า: สแกนบาร์โค้ดแล้วกดปุ่มบวก (+) เพื่อเพิ่มลงรายการขาย</doc>
+<status status="PASS" start="2026-09-02T17:55:51.745699" elapsed="0.004220"/>
+</kw>
+<kw name="Pay For Free Item" owner="pos_keywords">
+<if>
+<branch type="IF" condition="'${member_segmentation}' == 'All Members (card required)'">
+<kw name="Apply Member Barcode" owner="pos_keywords">
+<kw name="Click Member Button" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.750737" elapsed="0.000081"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-71,-192</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.750904" elapsed="0.000063"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.751042" elapsed="0.000165"/>
+</kw>
+<doc>คลิกปุ่ม "สมาชิก / ใช้ M-Stamp" (สำหรับโปรโมชั่นที่ต้องใช้บัตรสมาชิก)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.750602" elapsed="0.000643"/>
+</kw>
+<kw name="Get Member Barcode" owner="member_api_keywords">
+<var>${barcode}</var>
+<arg>${api_url}</arg>
+<arg>${api_token}</arg>
+<arg>${identify_id}</arg>
+<arg>${identify_value}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.751323" elapsed="0.000044"/>
+</kw>
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.751451" elapsed="0.000070"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.751607" elapsed="0.000147"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys=${barcode}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.751833" elapsed="0.000064"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.751983" elapsed="0.000052"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.752106" elapsed="0.000128"/>
+</kw>
+<kw name="Click Member Confirm" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.752496" elapsed="0.000070"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.752641" elapsed="0.000147"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}member_confirm_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.752879" elapsed="0.000070"/>
+</kw>
+<kw name="Find Text Offset From Center" owner="ocr_keywords">
+<var>${offset}</var>
+<arg>${image}</arg>
+<arg>ยืนยัน</arg>
+<arg>left_frac=0.30</arg>
+<arg>top_frac=0.75</arg>
+<arg>right_frac=0.55</arg>
+<arg>bottom_frac=0.95</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.753034" elapsed="0.000104"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:${offset}[0],${offset}[1]</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.753219" elapsed="0.000042"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.753330" elapsed="0.000133"/>
+</kw>
+<doc>คลิกปุ่ม "ยืนยัน" บนหน้าจอ "ยินดีต้อนรับสมาชิก" (หลังกรอกบาร์โค้ดสมาชิก)
+หาตำแหน่งปุ่มด้วย OCR (อ่านคำว่า "ยืนยัน" บนภาพหน้าจอจริง) แทนการเดาพิกัดตายตัว
+เพื่อให้คลิกถูกตำแหน่งเสมอไม่ว่าหน้าต่างจะขนาด/ตำแหน่งใดก็ตาม</doc>
+<status status="PASS" start="2026-09-02T17:55:51.752352" elapsed="0.001144"/>
+</kw>
+<arg>${member_api_url}</arg>
+<arg>${member_api_token}</arg>
+<arg>${member_identify_id}</arg>
+<arg>${member_identify_value}</arg>
+<doc>กดปุ่ม "สมาชิก / ใช้ M-Stamp" แล้วเรียก API ขอบาร์โค้ดสมาชิก
+(AllMemberRequestBarcode) แล้วคีย์บาร์โค้ดที่ได้ลงในช่องของ POS ตามด้วย Enter
+จากนั้นกดปุ่ม "ยืนยัน" บนหน้าจอสรุปข้อมูลสมาชิก/M-Stamp ที่เด้งขึ้นมา</doc>
+<status status="PASS" start="2026-09-02T17:55:51.750432" elapsed="0.003119"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.750302" elapsed="0.003279"/>
+</branch>
+<branch type="ELSE IF" condition="'${member_segmentation}' != 'Apply Promotion to All Customers (no card required)'">
+<kw name="Fail" owner="BuiltIn">
+<arg>ไม่รู้จัก member_segmentation: ${member_segmentation}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.753693" elapsed="0.000117"/>
+</kw>
+<status status="PASS" start="2026-09-02T17:55:51.753616" elapsed="0.000225"/>
+</branch>
+<status status="PASS" start="2026-09-02T17:55:51.750284" elapsed="0.003577"/>
+</if>
+<kw name="Get Unit Price From Screen" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<var>${window}</var>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.754146" elapsed="0.000077"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}unit_price_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.754307" elapsed="0.000071"/>
+</kw>
+<kw name="Read Subtotal From Image" owner="ocr_keywords">
+<var>${subtotal}</var>
+<arg>${image}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.754668" elapsed="0.000110"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${price}</var>
+<arg>${subtotal} / ${trigger_value}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.754931" elapsed="0.000449"/>
+</kw>
+<return>
+<value>${price}</value>
+<status status="PASS" start="2026-09-02T17:55:51.755533" elapsed="0.000046"/>
+</return>
+<var>${unit_price}</var>
+<arg>${trigger_value}</arg>
+<doc>แคปหน้าจอชำระเงินแล้วอ่าน "ยอดรวม" (ราคาเต็มก่อนหักส่วนลด) ด้วย OCR
+แล้วหารด้วยจำนวนชิ้นเพื่อได้ราคาต่อชิ้น (ตารางรายการไม่แสดงแล้วหลังกด + จึงอ่าน
+"ยอดรวม" แทนคอลัมน์ "ราคา/หน่วย")</doc>
+<status status="PASS" start="2026-09-02T17:55:51.753989" elapsed="0.001688"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${expected_amount}</var>
+<arg>(${trigger_value} - 1) * ${unit_price}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.755946" elapsed="0.000402"/>
+</kw>
+<kw name="Get Amount Due From Screen" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<var>${window}</var>
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.757296" elapsed="0.000270"/>
+</kw>
+<kw name="Screenshot" owner="RPA.Windows">
+<var>${image}</var>
+<arg>executable:vncviewer.exe</arg>
+<arg>${OUTPUT_DIR}${/}payment_screen.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.757939" elapsed="0.000264"/>
+</kw>
+<kw name="Read Amount From Image" owner="ocr_keywords">
+<var>${amount}</var>
+<arg>${image}</arg>
+<status status="NOT RUN" start="2026-09-02T17:55:51.758514" elapsed="0.000146"/>
+</kw>
+<return>
+<value>${amount}</value>
+<status status="PASS" start="2026-09-02T17:55:51.758781" elapsed="0.000062"/>
+</return>
+<var>${actual}</var>
+<doc>แคปหน้าจอหน้าชำระเงินแล้วอ่านตัวเลข "ยอดที่ต้องชำระ" ด้วย OCR</doc>
+<status status="PASS" start="2026-09-02T17:55:51.756772" elapsed="0.002193"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected_amount}</arg>
+<arg>msg=บาร์โค้ด ${barcode}: ยอดที่ต้องชำระ (${actual}) ไม่ตรงกับที่คำนวณได้ (${expected_amount} = (${trigger_value}-1)×${unit_price})</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.759235" elapsed="0.000650"/>
+</kw>
+<kw name="Click Exact Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.760936" elapsed="0.000223"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>executable:vncviewer.exe offset:-211,-25</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.761387" elapsed="0.000135"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.761691" elapsed="0.000313"/>
+</kw>
+<doc>คลิกปุ่ม "รับพอดี" (ชำระด้วยจำนวนเงินพอดี ไม่ต้องทอน)
+offset คำนวณจากตำแหน่งปุ่มจริงบนกริด เทียบกับจุดกึ่งกลางหน้าต่าง (ภาพหน้าจอขนาด 1602x667)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.760391" elapsed="0.001672"/>
+</kw>
+<kw name="Confirm Payment" owner="pos_keywords">
+<kw name="Control Window" owner="RPA.Windows">
+<arg>executable:vncviewer.exe</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.762485" elapsed="0.000101"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.762695" elapsed="0.000219"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<arg>keys={LEFT}{ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.763028" elapsed="0.000084"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.763225" elapsed="0.000210"/>
+</kw>
+<doc>ยืนยันกล่องข้อความ "ยืนยันรับชำระ" โดยเลือกปุ่ม "ใช่"
+(ปุ่ม "ไม่ใช่" เป็น default โฟกัสอยู่ ต้องกด Left ย้ายไปปุ่ม "ใช่" ก่อนกด Enter)</doc>
+<status status="PASS" start="2026-09-02T17:55:51.762246" elapsed="0.001239"/>
+</kw>
+<arg>${row}[barcode]</arg>
+<arg>${row}[trigger_value]</arg>
+<arg>${row}[member_segmentation]</arg>
+<arg>${MEMBER_API_URL}</arg>
+<arg>${MEMBER_API_TOKEN}</arg>
+<arg>${MEMBER_IDENTIFY_ID}</arg>
+<arg>${MEMBER_IDENTIFY_VALUE}</arg>
+<doc>สำหรับโปรโมชั่น reward_type = "Free Item" (ซื้อครบแถมฟรี เช่น 1 แถม 1)
+ไม่มี reward_value ตรงๆ เหมือน New Price ต้องคำนวณเอง:
+expected_amount = (trigger_value - 1) × ราคาต่อชิ้น (อ่านจากคอลัมน์ "ราคา/หน่วย" บนหน้าจอ)
+กดสมาชิก+ยืนยัน (ถ้าโปรโมชั่นนี้ต้องใช้บัตรสมาชิก) ก่อนเช็คราคาเสมอ เพราะราคาโปรโมชั่น
+จะยังไม่ขึ้นจนกว่าจะยืนยันสมาชิกแล้ว จากนั้นกด "รับพอดี" และยืนยันการชำระ</doc>
+<status status="PASS" start="2026-09-02T17:55:51.750104" elapsed="0.013427"/>
+</kw>
+<var name="${row}"/>
+<status status="PASS" start="2026-09-02T17:55:51.745361" elapsed="0.018273"/>
+</iter>
+<var>${row}</var>
+<value>@{rows}</value>
+<status status="PASS" start="2026-09-02T17:55:51.745277" elapsed="0.018397"/>
+</for>
+<doc>ดึงรายการโปรโมชั่น Free Item จากฐานข้อมูล แล้ววนขายทีละรายการต่อเนื่องกันโดยไม่ login ใหม่
+แต่ละรายการแยกเป็น 2 ขั้นตอนชัดเจน: ขายสินค้า (Sell Product) แล้วชำระยอดและชำระเงิน (Pay For Free Item)
+ไม่มี reward_value ตรงๆ เหมือน New Price ต้องคำนวณเอง (trigger_value-1) × ราคา/หน่วยบนหน้าจอ</doc>
+<status status="PASS" start="2026-09-02T17:55:51.742584" elapsed="0.021229"/>
+</test>
+<kw name="Close Current Window" owner="RPA.Windows" type="TEARDOWN">
+<tag>window</tag>
+<doc>Closes current active window or logs a warning message.</doc>
+<status status="NOT RUN" start="2026-09-02T17:55:51.764299" elapsed="0.000049"/>
+</kw>
+<doc>ทดสอบขายสินค้าตามโปรโมชั่น Free Item (ซื้อครบแถมฟรี) จากฐานข้อมูล</doc>
+<status status="PASS" start="2026-09-02T17:55:51.727187" elapsed="0.037203"/>
+</suite>
+<status status="PASS" start="2026-09-02T17:55:50.352318" elapsed="1.413633"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Earn Points &amp; New Price &amp; Free Item" id="s1" pass="9" fail="0" skip="0">Earn Points &amp; New Price &amp; Free Item</stat>
+<stat name="Earn Points" id="s1-s1" pass="3" fail="0" skip="0">Earn Points &amp; New Price &amp; Free Item.Earn Points</stat>
+<stat name="New Price" id="s1-s2" pass="3" fail="0" skip="0">Earn Points &amp; New Price &amp; Free Item.New Price</stat>
+<stat name="Free Item" id="s1-s3" pass="3" fail="0" skip="0">Earn Points &amp; New Price &amp; Free Item.Free Item</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,21 @@
+## member_api_data.notes.json
+  "MEMBER_API_URL": "https://allmember-api-ext-uat.cpall.co.th/AllMemberRequestBarcode/RequestBarcode",
+  "MEMBER_API_TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0aW1lU3RhbXAiOjE1NDc1NDYwODIwMDAsImNsaWVudElkIjoiZTg1ZDBjOWNkZThlNjVkMTc0YjI5ZjZkZjJkYmFiNTQiLCJjaGFubmVsSWQiOiJDTjAxIn0.h3qk3X4bq5uPMRjTtK9-avR9KFhv_mK7AyRlyxHq52s",
+  "MEMBER_IDENTIFY_ID": "0",
+  "MEMBER_IDENTIFY_VALUE": "010190590265"
+
+
+
+##pos_data.notes.json
+  "VNC": "path ไฟล์ UltraVNC Viewer.exe ที่ใช้เชื่อมต่อรีโมทไปเครื่อง POS",
+  "SERVER_IP": "IP เครื่อง POS ปลายทางที่จะเชื่อมต่อผ่าน VNC",
+  "VNC_PASSWORD": "รหัสผ่านตอนเชื่อมต่อ VNC (หน้าต่าง VNC Authentication)",
+  "EMP_CODE": "รหัสพนักงานที่ใช้ล็อกอินเข้าโปรแกรม POS",
+  "EMP_PASSWORD": "รหัสผ่านพนักงาน คู่กับ EMP_CODE",
+  "DB_FILE": "ชื่อไฟล์ฐานข้อมูล SQLite ที่เก็บข้อมูลโปรโมชั่น (ตาราง promotion_data)",
+  "ACTIVE_FROM": "เงื่อนไข filter คอลัมน์ active_from ในฐานข้อมูล",
+  "BATCH_START": "แถวเริ่มต้นของชุดที่จะรัน (นับจากผลลัพธ์หลัง filter, เริ่มที่ 1)",
+  "BATCH_END": "แถวสุดท้ายของชุดที่จะรัน"
+
+
+
