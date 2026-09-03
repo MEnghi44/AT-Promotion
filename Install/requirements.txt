@@ -1,0 +1,5 @@
+robotframework==7.4.2
+rpaframework-windows==11.0.0
+pytesseract==0.3.13
+pillow==12.3.0
+requests==2.34.2
