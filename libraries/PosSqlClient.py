@@ -9,9 +9,47 @@ self.credentials/self.library_directory/self.get_new_price_setting(...)
 """
 import os
 import time
+from datetime import datetime
 
 
 class PosSqlClient(object):
+    # เรียงตาม Python's datetime.weekday() (0=จันทร์ ... 6=อาทิตย์) ให้ index
+    # ตรงกันเป๊ะระหว่าง 2 list นี้
+    _WEEKDAY_FG_COLUMNS = ['MON_FG', 'TUE_FG', 'WED_FG', 'THU_FG', 'FRI_FG', 'SAT_FG', 'SUN_FG']
+    _WEEKDAY_NAMES_TH = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์', 'อาทิตย์']
+
+    def check_promotion_active_today(self, promotion_code):
+        """เช็คว่าโปรนี้ (MMBR_PROM_ID = promotion_code) ตั้งให้เล่นวันนี้
+        ไหม จาก LPE_PromotionHeader (SUN_FG..SAT_FG, 0=ไม่เล่น, 1=เล่น) - ใช้
+        วันที่ของเครื่อง POS ที่รันสคริปต์นี้อยู่ (datetime.now() - สคริปต์
+        นี้รันอยู่บนเครื่อง POS โดยตรงผ่าน ctypes อยู่แล้ว)
+
+        ถ้าไม่พบแถว MMBR_PROM_ID นี้เลยใน LPE_PromotionHeader ถือว่าโปรนี้
+        ไม่จำกัดวัน (ไม่ block การทดสอบ) เพราะโปรบางตัวอาจไม่มีแถวในตารางนี้
+
+        คืนค่า (is_active_today: bool, active_day_names_th: list, today_name_th: str)
+        """
+        conn = self._get_sql_connection()
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                'SELECT SUN_FG, MON_FG, TUE_FG, WED_FG, THU_FG, FRI_FG, SAT_FG '
+                'FROM [LPE_PROM].[dbo].[LPE_PromotionHeader] WHERE MMBR_PROM_ID = ?',
+                promotion_code)
+            row = cur.fetchone()
+            if not row:
+                return True, [], ''
+            columns = [c[0] for c in cur.description]
+            data = dict(zip(columns, row))
+            flags = [data.get(col) for col in self._WEEKDAY_FG_COLUMNS]
+            weekday_index = datetime.now().weekday()
+            active_days_th = [
+                name for name, flag in zip(self._WEEKDAY_NAMES_TH, flags)
+                if str(flag) == '1']
+            is_active_today = str(flags[weekday_index]) == '1'
+            return is_active_today, active_days_th, self._WEEKDAY_NAMES_TH[weekday_index]
+        finally:
+            conn.close()
     def _pos_sql_config(self):
         cfg = self.credentials.get('pos_sql')
         if not cfg:
@@ -75,6 +113,32 @@ class PosSqlClient(object):
         raise AssertionError(
             'ไม่พบข้อมูลการขายใหม่ใน TS_SALE_ITEM (POS_NO={0}, baseline RECEIPT_NO={1})'.format(
                 pos_no, baseline))
+
+    def get_sale_price_from_ms_price_sale(self, product_code):
+        """ราคาขายจริงปัจจุบันของสินค้า (ก่อนหักโปร Amount Off) จาก
+        MS_PRICE_SALE - ใช้ประมาณยอดสะสมล่วงหน้าระหว่างสแกน bucketid=1
+        (ยังไม่ใช่ราคาสุทธิหลังหักส่วนลดจริง อันนั้นต้องเช็คด้วย OCR ที่
+        หน้าชำระเงินอีกที เพราะราคาจริงอาจต่างจากตารางนี้)
+        """
+        store_code = self.credentials.get('store_code', '')
+        conn = self._get_sql_connection()
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                'SELECT TOP 1 SALE_PRICE FROM MS_PRICE_SALE '
+                'WHERE PRODUCT_CODE = ? AND STORE_ID = ? AND PROMOTION_TYPE_NO = 0 '
+                'AND (EFFECTIVE_DATETIME IS NULL OR EFFECTIVE_DATETIME <= GETDATE()) '
+                'AND (EXPIRE_DATETIME IS NULL OR EXPIRE_DATETIME >= GETDATE()) '
+                'ORDER BY EFFECTIVE_DATETIME DESC',
+                product_code, store_code)
+            row = cur.fetchone()
+            if not row or row[0] is None:
+                raise AssertionError(
+                    'ไม่พบราคาใน MS_PRICE_SALE (PRODUCT_CODE={0}, STORE_ID={1})'.format(
+                        product_code, store_code))
+            return float(row[0])
+        finally:
+            conn.close()
 
     @staticmethod
     def _fetch_all_as_dicts(cur):

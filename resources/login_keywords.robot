@@ -9,8 +9,11 @@ ${PASSWORD_X}    314
 ${PASSWORD_Y}    278
 ${ENTER_X}       676
 ${ENTER_Y}       350
+
+
 *** Keywords ***
 Check Store Code Before Login
+    Sleep    5s
     ${store_code}=    Get Login Value    store_code
     Should Not Be Empty    ${store_code}
     Log    ตรวจสอบรหัสสาขาเรียบร้อย: ${store_code}

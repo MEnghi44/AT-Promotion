@@ -62,6 +62,8 @@ if not "%RESULT%"=="0" echo [ERROR] Promotion test failed with code %RESULT%.
 if "%RESULT%"=="0" echo [OK] Promotion test completed. See %BASE_DIR%results\report.html and %BASE_DIR%results\log_*.xlsx
 
 :finish
-echo.
-pause
+if not "%RESULT%"=="0" (
+    echo.
+    pause
+)
 endlocal & exit /b %RESULT%

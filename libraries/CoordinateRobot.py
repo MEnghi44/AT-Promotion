@@ -157,6 +157,30 @@ class CoordinateRobot(object):
         self.user32.EnumChildWindows(hwnd, enum_callback, 0)
         return found[0]
 
+    def get_pixel_region(self, x, y, width, height):
+        """อ่านสี (r, g, b) ของทุกพิกเซลในกรอบสี่เหลี่ยม (x, y, width, height)
+
+        คืนค่าเป็น list ของ list (แถวต่อแถว) ใช้เปิด DC ครั้งเดียวแล้ววนอ่าน
+        ทีละพิกเซล (ไม่มี PIL/numpy ให้ใช้บนเครื่องนี้) สำหรับงาน OCR แบบ
+        pixel-template matching ของ PriceOcr
+        """
+        screen_dc = self.user32.GetDC(0)
+        try:
+            rows = []
+            for row in range(int(height)):
+                pixels = []
+                for col in range(int(width)):
+                    pixel = ctypes.windll.gdi32.GetPixel(
+                        screen_dc, int(x) + col, int(y) + row)
+                    red = pixel & 255
+                    green = (pixel >> 8) & 255
+                    blue = (pixel >> 16) & 255
+                    pixels.append((red, green, blue))
+                rows.append(pixels)
+            return rows
+        finally:
+            self.user32.ReleaseDC(0, screen_dc)
+
     def get_pixel_color(self, x, y):
         """อ่านสี (r, g, b) ของพิกเซลบนหน้าจอที่ตำแหน่ง (x, y)
 

@@ -589,6 +589,68 @@ class NewPriceRobot(PosSqlClient):
             text = text[:40]
         return text or 'Sheet1'
 
+    def _finish_bill_and_read_result(self, log_index, delay, pos_no):
+        """กดปุ่ม "รับพอดี" -> รอ/ยืนยัน popup -> เช็ค M-Stamp popup -> รอ
+        database บันทึกบิล -> อ่านราคาสุทธิ (TS_SALE_ITEM) + LPE promotion
+        check ย้อนหลัง - ใช้ร่วมกันทั้ง New Price/Free Item
+        (process_new_price_row) และ Amount Off (AmountOffRobot) เพราะ
+        ขั้นตอนปิดบิล/อ่านผลลัพธ์เหมือนกันทุกอย่าง ต่างกันแค่ตอนก่อนหน้านี้
+        (สแกนสินค้ายังไงกว่าจะมาถึงจุดนี้)
+
+        คืนค่า (pos_price, first_rule, first_item) และตั้ง self.last_lpe_combos
+        ไว้ให้เรียก log ทีละ combo ต่อได้เหมือนเดิม
+        """
+        self._log_step(log_index, 'Click receive-exact button')
+        self.robot.click_at(*self.get_new_price_coordinate('receive_exact_button'))
+        time.sleep(delay)
+        self._log_step(log_index, 'Waiting for confirm popup (checking Yes button text)')
+        popup_timeout = float(self.get_new_price_setting('popup_timeout_seconds', 10))
+        popup_ok = self.wait_for_popup_button(popup_timeout, delay)
+        # popup บางครั้งเด้งช้ากว่าปกติ (POS ยุ่งประมวลผลบิลก่อนหน้า) -
+        # ก่อนถือว่า Fail จริง ลองคลิกปุ่ม "รับพอดี" ซ้ำแล้วรอใหม่อีกรอบ
+        retry_count = int(self.get_new_price_setting('receive_exact_retry_count', 1))
+        attempt = 1
+        while not popup_ok and attempt <= retry_count:
+            attempt += 1
+            self._log_step(
+                log_index, 'Popup not detected yet - retry {0}/{1}: '
+                'click receive-exact button again'.format(attempt, retry_count + 1))
+            self.robot.click_at(*self.get_new_price_coordinate('receive_exact_button'))
+            time.sleep(delay)
+            popup_ok = self.wait_for_popup_button(popup_timeout, delay)
+        if not popup_ok:
+            raise AssertionError(
+                'popup ยืนยันรับพอดี (Confirm) ไม่เด้ง (ลองแล้ว {0} ครั้ง)'.format(
+                    retry_count + 1))
+
+        self._log_step(log_index, 'Click Yes to confirm popup')
+        self.robot.click_at(*self.get_new_price_coordinate('popup_confirm_yes_button'))
+        time.sleep(delay)
+        self._handle_mstamp_choice_popup(log_index, delay)
+        self._log_step(
+            log_index, 'Row {0} done (bill close will be confirmed via database check below)'.format(
+                log_index))
+
+        db_wait = float(self.get_new_price_setting('db_price_check_wait_seconds', 10))
+        self._log_step(log_index, 'Waiting {0}s for database to record the sale (bill closed)'.format(db_wait))
+        time.sleep(db_wait)
+        self._log_step(log_index, 'Reading price from database (TS_SALE_ITEM) retroactively')
+        pos_price = self.read_price_from_db()
+        self._log_step(log_index, 'Price read: {0}'.format(pos_price))
+        rule_rows, item_rows = self.read_lpe_promotion_check(
+            pos_no, receipt_no=self.last_receipt_no)
+        self._log_step(
+            log_index, 'LPE item_rows count={0}, product_codes seen={1}'.format(
+                len(item_rows), [r.get('PRODUCT_CODE') for r in item_rows]))
+        self.last_lpe_combos = self._build_lpe_combos(rule_rows, item_rows)
+        first_rule, first_item = self.last_lpe_combos[0]
+        self._log_step(
+            log_index, 'LPE promotion check: combos={0}, rule_name={1}, sumamt={2}, '
+            'item_reware={3}'.format(
+                len(self.last_lpe_combos), first_rule.get('rule_name'),
+                first_rule.get('sumamt'), first_item.get('item_reware')))
+        return pos_price, first_rule, first_item
+
     # ------------------------------------------------------------------
     # ขั้นตอนเต็มของ POS ต่อ 1 แถว (สั่งงาน CoordinateRobot ตรงๆ เพราะ Robot
     # Framework 3.1.2 ไม่มี IF/ELSE block ให้เขียนเงื่อนไขแบบนี้)
@@ -617,6 +679,19 @@ class NewPriceRobot(PosSqlClient):
         try:
             delay = float(self.get_new_price_setting('step_delay_seconds', 2.0))
             self._log_step(log_index, 'Start row {0}'.format(log_index))
+
+            row_for_day_check = self._get_row(index)
+            is_active_today, active_days_th, today_name_th = self.check_promotion_active_today(
+                row_for_day_check.get('promotion_code'))
+            if not is_active_today:
+                remark = (
+                    'เล่นเฉพาะวัน {0} (วันนี้ {1}) - ข้ามการทดสอบ (เจอจาก '
+                    'LPE_PromotionHeader)'.format(
+                        ', '.join(active_days_th) if active_days_th else 'ไม่มีวันที่เปิดเล่นเลย',
+                        today_name_th))
+                self._log_step(log_index, 'SKIP (N/A): {0}'.format(remark))
+                self.log_new_price_result(index, '', '', 'N/A', remark, receipt_no='', pos_no=pos_no)
+                return True
 
             baseline = self.capture_sql_baseline()
             self._log_step(log_index, 'Captured baseline RECEIPT_NO before scan: {0}'.format(baseline))
@@ -648,55 +723,8 @@ class NewPriceRobot(PosSqlClient):
                     'ไม่รองรับ member_segmentation: ' +
                     str(row.get('member_segmentation', '')))
 
-            self._log_step(log_index, 'Click receive-exact button')
-            self.robot.click_at(*self.get_new_price_coordinate('receive_exact_button'))
-            time.sleep(delay)
-            self._log_step(log_index, 'Waiting for confirm popup (checking Yes button text)')
-            popup_timeout = float(self.get_new_price_setting('popup_timeout_seconds', 10))
-            popup_ok = self.wait_for_popup_button(popup_timeout, delay)
-            # popup บางครั้งเด้งช้ากว่าปกติ (POS ยุ่งประมวลผลบิลก่อนหน้า) -
-            # ก่อนถือว่า Fail จริง ลองคลิกปุ่ม "รับพอดี" ซ้ำแล้วรอใหม่อีกรอบ
-            retry_count = int(self.get_new_price_setting('receive_exact_retry_count', 1))
-            attempt = 1
-            while not popup_ok and attempt <= retry_count:
-                attempt += 1
-                self._log_step(
-                    log_index, 'Popup not detected yet - retry {0}/{1}: '
-                    'click receive-exact button again'.format(attempt, retry_count + 1))
-                self.robot.click_at(*self.get_new_price_coordinate('receive_exact_button'))
-                time.sleep(delay)
-                popup_ok = self.wait_for_popup_button(popup_timeout, delay)
-            if not popup_ok:
-                raise AssertionError(
-                    'popup ยืนยันรับพอดี (Confirm) ไม่เด้ง (ลองแล้ว {0} ครั้ง)'.format(
-                        retry_count + 1))
-
-            self._log_step(log_index, 'Click Yes to confirm popup')
-            self.robot.click_at(*self.get_new_price_coordinate('popup_confirm_yes_button'))
-            time.sleep(delay)
-            self._handle_mstamp_choice_popup(log_index, delay)
-            self._log_step(
-                log_index, 'Row {0} done (bill close will be confirmed via database check below)'.format(
-                    log_index))
-
-            db_wait = float(self.get_new_price_setting('db_price_check_wait_seconds', 10))
-            self._log_step(log_index, 'Waiting {0}s for database to record the sale (bill closed)'.format(db_wait))
-            time.sleep(db_wait)
-            self._log_step(log_index, 'Reading price from database (TS_SALE_ITEM) retroactively')
-            pos_price = self.read_price_from_db()
-            self._log_step(log_index, 'Price read: {0}'.format(pos_price))
-            rule_rows, item_rows = self.read_lpe_promotion_check(
-                pos_no, receipt_no=self.last_receipt_no)
-            self._log_step(
-                log_index, 'LPE item_rows count={0}, product_codes seen={1}'.format(
-                    len(item_rows), [r.get('PRODUCT_CODE') for r in item_rows]))
-            self.last_lpe_combos = self._build_lpe_combos(rule_rows, item_rows)
-            first_rule, first_item = self.last_lpe_combos[0]
-            self._log_step(
-                log_index, 'LPE promotion check: combos={0}, rule_name={1}, sumamt={2}, '
-                'item_reware={3}'.format(
-                    len(self.last_lpe_combos), first_rule.get('rule_name'),
-                    first_rule.get('sumamt'), first_item.get('item_reware')))
+            pos_price, first_rule, first_item = self._finish_bill_and_read_result(
+                log_index, delay, pos_no)
             if not self.new_price_matches_reward(index, pos_price, first_item):
                 if not first_rule.get('rule_id'):
                     # ไม่มี rule ยิงเข้า TA_PROMOTION_HITRULE เลย (เช็คจาก
